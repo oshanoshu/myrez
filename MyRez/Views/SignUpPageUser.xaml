@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="MyRez.Views.SignUpPageUser">
+     <ContentPage.Content>
+        <StackLayout>
+        <!-- Place new controls here -->
+        <Entry x:Name="name" Text="{Binding Name}" Placeholder="Name" TextColor="White" FontFamily="Georgia" FontSize="18" />
+        <Entry x:Name="email" Text="{Binding Email}" Placeholder="Email" TextColor="White" FontFamily="Georgia" FontSize="18"/>
+        <Entry x:Name="phoneNumber" Text="{Binding PhoneNumber}" Placeholder="Phone Number" TextColor="White" FontFamily="Georgia" FontSize="18"/>
+        <Entry x:Name="building" Text="{Binding Building}" Placeholder="Building" TextColor="White" FontFamily="Georgia" FontSize="18"/>
+        <Entry x:Name="roomNo" Text="{Binding RoomNo}" Placeholder="RoomNo" TextColor="White" FontFamily="Georgia" FontSize="18"/>
+        <Entry x:Name="address" Text="{Binding Address}" Placeholder="Address" TextColor="White" FontFamily="Georgia" FontSize="18"/>
+        <Entry x:Name="emergencyContact" Text="{Binding EmergencyContact}" Placeholder="EmergencyContact" TextColor="White" FontFamily="Georgia" FontSize="18"/>
+        <Entry x:Name="userName" Text="{Binding Username}" Placeholder="Username" TextColor="White" FontFamily="Georgia" FontSize="18"/>
+        <Entry x:Name="passWord" Text="{Binding Password}" Placeholder="Password" TextColor="White" FontFamily="Georgia" FontSize="18" IsPassword="True"/>
+        <Entry x:Name="confirmPassword" Text="{Binding CPassword}" Placeholder="Confirm Password" TextColor="White" FontFamily="Georgia" FontSize="18" IsPassword="True"/>
+        <Button Text="Sign Up" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="Maroon" Padding="10" TextColor="White" FontFamily="Georgia" FontSize="18"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

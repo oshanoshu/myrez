@@ -1,0 +1,54 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Forms" Version="4.2.0.709249" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.2.0" />
+    <PackageReference Include="sqlite-net-pcl" Version="1.6.292" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+    <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.7" />
+    <PackageReference Include="Twilio" Version="5.35.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="IDBInterface.cs" />
+    <Compile Remove="Views\MyMasterDetailPageMaster.xaml.cs" />
+    <Compile Remove="Views\MyMasterDetailPage.xaml.cs" />
+    <Compile Remove="Views\MyMasterDetailPageDetail.xaml.cs" />
+    <Compile Remove="Views\MyMasterDetailPageMenuItem.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\" />
+    <Folder Include="Views\" />
+    <Folder Include="ViewModels\" />
+    <Folder Include="message\" />
+    <Folder Include="Validation\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Mono.Android">
+      <HintPath>..\..\..\..\..\Library\Frameworks\Xamarin.Android.framework\Versions\10.0.3.0\lib\xamarin.android\xbuild-frameworks\MonoAndroid\v9.0\Mono.Android.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Remove="Views\MyPage.xaml" />
+    <EmbeddedResource Remove="Views\SignupPage.xaml" />
+    <EmbeddedResource Remove="Views\SignUpPageUset.xaml" />
+    <EmbeddedResource Remove="Views\MyMasterDetailPageMaster.xaml" />
+    <EmbeddedResource Remove="Views\MyMasterDetailPage.xaml" />
+    <EmbeddedResource Remove="Views\MyMasterDetailPageDetail.xaml" />
+    <EmbeddedResource Remove="Views\MenuPage.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Views\SignupPageAdmin.xaml.cs~" />
+    <None Remove="Views\LoginPage.xaml.cs~" />
+    <None Remove="Views\MainPage.xaml.cs~" />
+    <None Remove="Views\SignupPage.xaml.cs~" />
+    <None Remove="Views\SignUpPageUser.xaml.cs~" />
+    <None Remove="Views\Verification.xaml.cs~" />
+    <None Remove="Views\res1.png" />
+    <None Remove="Views\res.png" />
+  </ItemGroup>
+</Project>
