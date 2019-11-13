@@ -12,36 +12,37 @@ namespace MyRez.Views
         {
             
             InitializeComponent();
+            //BindingContext = new LoginPageViewModel();
             BindingContext = new LoginPageViewModel();
         }
         
-        private async void LogIn(bool isLoggedIn)
-        {
-            if (isLoggedIn == true)
-            {
-                Application.Current.Properties["IsLoggedIn"] = true;
-                await Application.Current.SavePropertiesAsync();
-                Application.Current.MainPage=new NavigationPage(new MenuPageAdmin());
-                //await Navigation.PopAsync();
-            }
-        }
-
-        LoginPageViewModel viewModel;
-        //async void OnLogInButtonClicked(object sender, EventArgs e)
+        //private async void LogIn(bool isLoggedIn)
         //{
-
-        //    if (viewModel.isLoggedIn == true)
+        //    if (isLoggedIn == true)
         //    {
         //        Application.Current.Properties["IsLoggedIn"] = true;
         //        await Application.Current.SavePropertiesAsync();
-        //        
+        //        Application.Current.MainPage=new NavigationPage(new MenuPageAdmin());
+        //        //await Navigation.PopAsync();
         //    }
         //}
-        async void OnLogInButtonClicked(object sender, EventArgs e)
-        {
-            viewModel = (LoginPageViewModel)BindingContext;
-            LogIn(viewModel.isLoggedIn);
-        }
+
+        //LoginPageViewModel viewModel;
+        ////async void OnLogInButtonClicked(object sender, EventArgs e)
+        ////{
+
+        ////    if (viewModel.isLoggedIn == true)
+        ////    {
+        ////        Application.Current.Properties["IsLoggedIn"] = true;
+        ////        await Application.Current.SavePropertiesAsync();
+        ////        
+        ////    }
+        ////}
+        //async void OnLogInButtonClicked(object sender, EventArgs e)
+        //{
+        //    viewModel = (LoginPageViewModel)BindingContext;
+        //    LogIn(viewModel.isLoggedIn);
+        //}
         async void OnSignUpAdminButtonClicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new SignupPageAdmin());

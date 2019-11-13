@@ -14,7 +14,7 @@
         <Image Source="AppIcon" Grid.Row="1" Grid.ColumnSpan="2"/>
         <Entry x:Name="username" Text="{Binding Username}" Placeholder="Username" Grid.Row="1" Grid.ColumnSpan="2" FontFamily="Georgia" FontSize="25" />
         <Entry x:Name="password" Text="{Binding Password}" Placeholder="Password" IsPassword="True" Grid.Row="2" Grid.ColumnSpan="2" FontFamily="Georgia" FontSize="25"/>
-        <Button Clicked="OnLogInButtonClicked" Text="Log In" Command="{Binding AuthorizeUsers}" HorizontalOptions="Center" BackgroundColor="Maroon" Grid.Row="3" Grid.ColumnSpan="2" Padding="10" TextColor="White" FontFamily="Georgia" FontSize="18"/>
+        <Button Text="Log In" Command="{Binding AuthorizeUsers}" HorizontalOptions="Center" BackgroundColor="Maroon" Grid.Row="3" Grid.ColumnSpan="2" Padding="10" TextColor="White" FontFamily="Georgia" FontSize="18"/>
         <Label Text="New User?" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Grid.Row="4" Grid.ColumnSpan="2" TextColor="Red" FontFamily="Georgia" FontSize="18"/>
         <Button Clicked="OnSignUpAdminButtonClicked" Text="Sign Up- Admin" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="Maroon" Grid.Row="5" Grid.Column="0" Padding="10" TextColor="White" FontFamily="Georgia" FontSize="18"/>
         <Button Clicked="OnSignUpUserButtonClicked" Text="Sign Up- Residents" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="Maroon" Grid.Row="5" Grid.Column="1" Padding="10" TextColor="White" FontFamily="Georgia" FontSize="18"/>

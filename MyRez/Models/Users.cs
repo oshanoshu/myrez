@@ -10,5 +10,6 @@ namespace MyRez.Models
         public String Major { get; set; }
         public String Address { get; set; }
         public String Username { get; set; }
+        public String Email { get; set; }
     }
 }

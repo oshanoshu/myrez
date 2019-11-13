@@ -26,6 +26,8 @@
     <Folder Include="ViewModels\" />
     <Folder Include="message\" />
     <Folder Include="Validation\" />
+    <Folder Include="Database\" />
+    <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Mono.Android">
