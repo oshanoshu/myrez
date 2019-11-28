@@ -3,7 +3,7 @@
     <ContentPage.Content>
         <StackLayout>
         <Entry x:Name="code" Placeholder="Verification Code" FontSize="25" HorizontalOptions="Center" VerticalOptions="Center"></Entry>
-        <Button Clicked="clicked" Text="Submit" Padding="10" FontSize="20" FontFamily="Georgia"/>
+        <Button Command="{Binding VerifyUsers}" Text="Submit" Padding="10" FontSize="20" FontFamily="Georgia"/>
     </StackLayout>
         </ContentPage.Content>
 </ContentPage>

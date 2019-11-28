@@ -7,35 +7,29 @@ using Xamarin.Forms;
 
 namespace MyRez.ViewModels
 {
-    public class SignupPageAdminViewModel:BaseViewModel
+    public class SignupPageUserViewModel:BaseViewModel
     {
-        LoginSignUp logindetails = new LoginSignUp();
-        Residents administrators  = new Residents();
-        public SignupPageAdminViewModel()
+        public SignupPageUserViewModel()
         {
             SignUpUsers = new Command(async () => await SignUpAsync());
-            VerifyUsers = new Command(async () => await VerifyAsync());
         }
-
-        private Task VerifyAsync()
-        {
-            throw new NotImplementedException();
-        }
-
+        LoginSignUp logindetails = new LoginSignUp();
+        Residents residents = new Residents();
+       
         private async Task SignUpAsync()
         {
-            if(Validate())
+            if (Validate())
             {
-                logindetails.username = administrators.Username;
+                logindetails.username = residents.Username;
                 Database_API database = new Database_API();
-                database.SignUpAdminUsersAsync(logindetails, administrators);
+                database.SignUpResidentUsersAsync(logindetails, residents);
                 Application.Current.MainPage = new NavigationPage(new MenuPageAdmin());
             }
             else
             {
                 Console.WriteLine("Database Error.");
             }
-        
+
         }
 
         private bool Validate()
@@ -44,7 +38,6 @@ namespace MyRez.ViewModels
         }
 
         public Command SignUpUsers { get; }
-        public Command VerifyUsers { get; }
         //public string name = String.Empty;
         //public string email = String.Empty;
         //public string phoneNumber = String.Empty;
@@ -59,14 +52,14 @@ namespace MyRez.ViewModels
 
             get
             {
-                return administrators.Name;
+                return residents.Name;
             }
             set
             {
-                if (value != administrators.Name)
+                if (value != residents.Name)
                 {
 
-                    administrators.Name = value;
+                    residents.Name = value;
                     OnPropertyChanged();
                 }
             }
@@ -75,13 +68,13 @@ namespace MyRez.ViewModels
         {
             get
             {
-                return administrators.Email;
+                return residents.Email;
             }
             set
             {
-                if (value != administrators.Email)
+                if (value != residents.Email)
                 {
-                    administrators.Email = value;
+                    residents.Email = value;
                     OnPropertyChanged();
                 }
             }
@@ -90,13 +83,13 @@ namespace MyRez.ViewModels
         {
             get
             {
-                return administrators.PhoneNumber;
+                return residents.PhoneNumber;
             }
             set
             {
-                if (value != administrators.PhoneNumber)
+                if (value != residents.PhoneNumber)
                 {
-                    administrators.PhoneNumber = value;
+                    residents.PhoneNumber = value;
                     OnPropertyChanged();
                 }
             }
@@ -105,13 +98,13 @@ namespace MyRez.ViewModels
         {
             get
             {
-                return administrators.Building;
+                return residents.Building;
             }
             set
             {
-                if (value != administrators.Building)
+                if (value != residents.Building)
                 {
-                    administrators.Building = value;
+                    residents.Building = value;
                     OnPropertyChanged();
                 }
             }
@@ -121,14 +114,14 @@ namespace MyRez.ViewModels
 
             get
             {
-                return administrators.Address;
+                return residents.Address;
             }
             set
             {
-                if (value != administrators.Address)
+                if (value != residents.Address)
                 {
 
-                    administrators.Address = value;
+                    residents.Address = value;
                     OnPropertyChanged();
                 }
             }
@@ -137,13 +130,43 @@ namespace MyRez.ViewModels
         {
             get
             {
-                return administrators.Major;
+                return residents.Major;
             }
             set
             {
-                if (value != administrators.Major)
+                if (value != residents.Major)
                 {
-                    administrators.Major = value;
+                    residents.Major = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+        public int RoomNumber
+        {
+            get
+            {
+                return residents.RoomNumber;
+            }
+            set
+            {
+                if (value != residents.RoomNumber)
+                {
+                    residents.RoomNumber = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+        public string EmergencyContact
+        {
+            get
+            {
+                return residents.EmergencyContact;
+            }
+            set
+            {
+                if (value != residents.EmergencyContact)
+                {
+                    residents.EmergencyContact = value;
                     OnPropertyChanged();
                 }
             }
@@ -152,13 +175,13 @@ namespace MyRez.ViewModels
         {
             get
             {
-                return administrators.Username;
+                return residents.Username;
             }
             set
             {
-                if (value != administrators.Username)
+                if (value != residents.Username)
                 {
-                    administrators.Username = value;
+                    residents.Username = value;
                     OnPropertyChanged();
                 }
             }
