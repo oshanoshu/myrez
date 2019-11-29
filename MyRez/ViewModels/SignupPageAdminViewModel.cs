@@ -10,7 +10,7 @@ namespace MyRez.ViewModels
     public class SignupPageAdminViewModel:BaseViewModel
     {
         LoginSignUp logindetails = new LoginSignUp();
-        Residents administrators  = new Residents();
+        Administrators administrators  = new Administrators();
         public SignupPageAdminViewModel()
         {
             SignUpUsers = new Command(async () => await SignUpAsync());

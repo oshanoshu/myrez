@@ -1,10 +1,11 @@
 ﻿using System;
 namespace MyRez.Models
 {
-    public class WorkOrders
+    public class WorkOrder
     {
-        public WorkOrders()
-        {
-        }
+            public int WorkOrderID { get; }
+            public String WorkOrderMonth { get; set; }
+            public String WorkOrderItem { get; set; }
+            public int ResId { get; set; }
     }
 }

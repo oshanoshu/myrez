@@ -1,6 +1,99 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="MyRez.Views.WorkOrdersPageAdmin">
-    <ContentPage.Content>
-        <Label Text="This is where you will be able to view the workorders." />
-    </ContentPage.Content>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <!--
+            <Style x:Key="ProductsListStyle" 
+               TargetType="{x:Type ListView}">
+                <Setter Property="RowHeight"
+                        Value="400" />
+                <Setter Property="VerticalOptions"
+                        Value="Center" />
+                <Setter Property="Margin"
+                        Value="0" />
+            </Style>
+            -->
+            <!--
+            <Style x:Key="FilterLabelStyle" 
+               TargetType="{x:Type Label}">
+                <Setter Property="TextColor"
+                        Value="{StaticResource WhiteColor}" />
+                <Setter Property="HorizontalOptions"
+                        Value="Center" />
+                <Setter Property="VerticalOptions"
+                        Value="Center" />
+            </Style>
+            -->
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Grid  
+        ColumnSpacing="0"
+        RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <!--
+        <Grid
+            BackgroundColor="{StaticResource LightGreenColor}">
+            <Label 
+                Text="FILTER"
+                Style="{StaticResource FilterLabelStyle}"/>
+            <Grid.GestureRecognizers>
+                <TapGestureRecognizer 
+                        Tapped="OnFilterChanged"
+                        NumberOfTapsRequired="1" />
+            </Grid.GestureRecognizers>
+        </Grid>
+        CATALOG -->
+        <Grid  
+            Grid.Row="1">
+            <Grid 
+                IsVisible="{Binding IsBusy}">
+                <Label 
+                    Text="NO WorkOrders FOUND"      
+                    IsVisible="{Binding WorkOrders.Count}"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"/>
+            </Grid>
+            <ListView
+                x:Name="WorkOrders"       
+                IsVisible="{Binding WorkOrders.Count}"
+                ItemsSource="{Binding WorkOrders}"
+                HasUnevenRows="True"
+                SeparatorVisibility="Default"
+                CachingStrategy="RecycleElement"
+                Style="{StaticResource ProductsListStyle}">
+                <ListView.ItemTemplate>
+      <DataTemplate>
+          <ViewCell>
+              <StackLayout Padding="15,0">
+              <Label Text="{Binding WorkOrderItem}" />
+              <Label Text="{Binding WorkOrderMonth}" />
+              <!-- Mark Checked Button-->
+              <Button Text="Mark Checked"></Button>
+            <Button Text="Delete"></Button> 
+         </StackLayout>
+          </ViewCell>
+      </DataTemplate>
+       
+    </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+        <!-- INDICATOR -->
+        <ActivityIndicator
+            Grid.Row="0"
+            Grid.RowSpan="2"
+            IsRunning="{Binding IsBusy}"  
+            IsVisible="{Binding IsBusy}"
+            VerticalOptions="Center"
+            HorizontalOptions="Center">
+            <ActivityIndicator.WidthRequest>
+                <OnPlatform x:TypeArguments="x:Double">
+                    <On Platform="iOS, Android" Value="100" />
+                    <On Platform="UWP, WinRT, WinPhone" Value="400" />
+                </OnPlatform>
+            </ActivityIndicator.WidthRequest>
+        </ActivityIndicator>
+    </Grid>
 </ContentPage>

@@ -37,11 +37,11 @@ namespace MyRez.Views
             {
                 if (item.Title.Equals("Discussions"))
                 {
-                    Detail = new NavigationPage(new WorkOrdersPageAdmin());
+                    Detail = new NavigationPage(new DiscussionPageAdmin());
                 }
                 else if (item.Title.Equals("Work Orders"))
                 {
-                    Detail = new NavigationPage(new EmergencyAlertsPageAdmin());
+                    Detail = new NavigationPage(new WorkOrdersPageAdmin());
                 }
                 else if (item.Title.Equals("Emergency Alerts"))
                 {

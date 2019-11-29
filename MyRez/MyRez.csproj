@@ -29,6 +29,7 @@
     <Folder Include="Validation\" />
     <Folder Include="Database\" />
     <Folder Include="Services\" />
+    <Folder Include="Extensions\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Mono.Android">

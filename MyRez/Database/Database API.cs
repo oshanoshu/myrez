@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using MyRez.Models;
-
+using MyRez.Extensions;
 namespace MyRez.Database
 {
     public class Database_API
@@ -15,6 +16,25 @@ namespace MyRez.Database
             client.BaseAddress = new Uri("https://myrez.herokuapp.com/");
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+        }
+
+        //Get all workOrders
+        public async System.Threading.Tasks.Task<ObservableCollection<WorkOrder>> GetWorkOrdersAsync()
+        {
+            IEnumerable<WorkOrder> workOrders;
+            HttpResponseMessage response = await client.GetAsync("workorder");
+            if (response.IsSuccessStatusCode)
+            {
+                //Setting the data to the model
+                workOrders = await response.Content.ReadAsAsync<IEnumerable<WorkOrder>>();
+                if (workOrders != null)
+                    return workOrders.ToObservableCollection();
+                else
+                    return new ObservableCollection<WorkOrder>();
+            }
+            else
+                return new ObservableCollection<WorkOrder>();
+            
         }
 
         //Get userverification details
@@ -48,7 +68,7 @@ namespace MyRez.Database
         }
 
         //Post New Admin User
-        public async void SignUpAdminUsersAsync(LoginSignUp loginSignUp, Residents administrators)
+        public async void SignUpAdminUsersAsync(LoginSignUp loginSignUp, Administrators administrators)
         {
             loginSignUp.role = "Admin";
 
@@ -70,7 +90,7 @@ namespace MyRez.Database
         }
 
         //Post New  User
-        public async void SignUpResidentUsersAsync(LoginSignUp loginSignUp, Residents administrators)
+        public async void SignUpResidentUsersAsync(LoginSignUp loginSignUp, Residents residents)
         {
             loginSignUp.role = "Resident";
             HttpResponseMessage response1 = await client.PostAsJsonAsync("users", loginSignUp);
@@ -80,7 +100,7 @@ namespace MyRez.Database
                 //return loginDetailsDB = await response.Content.ReadAsAsync<List<LoginSignUp>>();
                 Console.WriteLine("Internal server Error");
             }
-            HttpResponseMessage response2 = await client.PostAsJsonAsync("userresident", administrators);
+            HttpResponseMessage response2 = await client.PostAsJsonAsync("userresident", residents);
             if (!response2.IsSuccessStatusCode)
             {
                 Console.WriteLine("Internal server Error");
