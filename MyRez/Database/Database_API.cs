@@ -113,15 +113,19 @@ namespace MyRez.Database
          //Get discussions
         public async System.Threading.Tasks.Task<ObservableCollection<Discussions>> GetDiscussionsAsync()
         {
-            ObservableCollection<Discussions> discussionsDB;
+            IEnumerable<Discussions> discussionsDB;
             HttpResponseMessage response = await client.GetAsync("discussions");
             if (response.IsSuccessStatusCode)
             {
-                //Setting the data to the model
-                return discussionsDB = await response.Content.ReadAsAsync<ObservableCollection<Discussions>>();
+               discussionDB = await response.Content.ReadAsAsync<IEnumerable<Discussions>>();
+
+               if (discussionsDB != null)
+                    return discussionsDB.ToObservableCollection();
+                else
+                    return new ObservableCollection<discussionsDB>();
             }
-            Console.WriteLine("Internal server Error");
-            return discussionsDB = null;
+            else
+                return new ObservableCollection<discussionsDB>();
 
         }
 
@@ -139,20 +143,6 @@ namespace MyRez.Database
 
         }
 
-        //Get workorders
-        public async System.Threading.Tasks.Task<ObservableCollection<WorkOrder>> GetWorkOrderAsync()
-        {
-            List<WorkOrder> workorderDB;
-            HttpResponseMessage response = await client.GetAsync("workorder");
-            if (response.IsSuccessStatusCode)
-            {
-                //Setting the data to the model
-                return workorderDB = await response.Content.ReadAsAsync<ObservableCollection<WorkOrder>>();
-            }
-            Console.WriteLine("Internal server Error");
-            return workorderDB = null;
-
-        }
 
         //Post workorders
         public async void postNewWorkOrderAsync(WorkOrder workorder)
@@ -171,15 +161,19 @@ namespace MyRez.Database
         //Get Comments
         public async System.Threading.Tasks.Task<ObservableCollection<Comments>> GetCommentsAsync()
         {
-            ObservableCollection<Comments> commentsDB;
+            IEnumerable<Comments> commentsDB;
             HttpResponseMessage response = await client.GetAsync("comments");
             if (response.IsSuccessStatusCode)
             {
-                //Setting the data to the model
-                return commentsDB = await response.Content.ReadAsAsync<ObservableCollection<Comments>>();
+                commentsDB = await response.Content.ReadAsAsync<IEnumerable<Comments>>();
+
+               if (commentsDB != null)
+                    return commentsDB.ToObservableCollection();
+                else
+                    return new ObservableCollection<commentsDB>();
             }
-            Console.WriteLine("Internal server Error");
-            return commentsDB = null;
+            else
+                return new ObservableCollection<commentsDB>();
 
         }
 
@@ -200,15 +194,19 @@ namespace MyRez.Database
         //Get Fines
         public async System.Threading.Tasks.Task<ObservableCollection<Fines>> GetFinesAsync()
         {
-            ObservableCollection<Fines> finesDB;
+            IEnumerable<Fines> finesDB;
             HttpResponseMessage response = await client.GetAsync("fines");
             if (response.IsSuccessStatusCode)
             {
-                //Setting the data to the model
-                return finesDB = await response.Content.ReadAsAsync<ObservableCollection<Fines>>();
+               finesDB = await response.Content.ReadAsAsync<IEnumerable<Fines>>();
+
+               if (finesDB != null)
+                    return finesDB.ToObservableCollection();
+                else
+                    return new ObservableCollection<finesDB>();
             }
-            Console.WriteLine("Internal server Error");
-            return finesDB = null;
+            else
+                return new ObservableCollection<finesDB>();
 
         }
 
@@ -229,16 +227,19 @@ namespace MyRez.Database
         //Get Guests
         public async System.Threading.Tasks.Task<ObservableCollection<Guest>> GetGuestAsync()
         {
-            ObservableCollection<Guest> guestsDB;
+            IEnumerable<Guest> guestsDB;
             HttpResponseMessage response = await client.GetAsync("guests");
             if (response.IsSuccessStatusCode)
             {
-                //Setting the data to the model
-                return guestsDB = await response.Content.ReadAsAsync<ObservableCollection<Guest>>();
-            }
-            Console.WriteLine("Internal server Error");
-            return guestsDB = null;
+                guestsDB = await response.Content.ReadAsAsync<IEnumerable<Guests>>();
 
+               if (guestsDB != null)
+                    return guestsDB.ToObservableCollection();
+                else
+                    return new ObservableCollection<guestsDB>();
+            }
+            else
+                return new ObservableCollection<guestsDB>();
         }
 
         //Post New Guests
@@ -262,11 +263,15 @@ namespace MyRez.Database
             HttpResponseMessage response = await client.GetAsync("emergencyalerts");
             if (response.IsSuccessStatusCode)
             {
-                //Setting the data to the model
-                return emergencyalertsDB = await response.Content.ReadAsAsync<ObservableCollection<EmergencyAlerts>>();
+                emergencyalertsDB = await response.Content.ReadAsAsync<IEnumerable<EmergencyAlerts>>();
+
+               if (emergencyalertsDB != null)
+                    return emergencyalertsDB.ToObservableCollection();
+                else
+                    return new ObservableCollection<emergencyalertsDB>();
             }
-            Console.WriteLine("Internal server Error");
-            return emergencyalertsDB = null;
+            else
+                return new ObservableCollection<emergencyalertsDB>();
 
         }
 
