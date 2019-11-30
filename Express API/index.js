@@ -211,6 +211,17 @@ const getEmergencyAlert= (request, response) => {
     response.status(200).json(results.rows)
   })
 }
+
+//Api to delete the work order
+const deleteworkOrder = (request, response) => {
+  pool.query('DELETE FROM WorkOrder WHERE WorkOrderID=1', (error, results) => {
+    if (error) {
+      throw error
+    }
+    response.status(200).json(results.rows)
+  })
+}
+
 //API routes
 //LoginSignUp
 app
