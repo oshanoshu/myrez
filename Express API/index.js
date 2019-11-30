@@ -115,7 +115,7 @@ const getWorkOrder= (request, response) => {
     response.status(200).json(results.rows)
   })
 }
-//API to post new discussion
+//API to post new WorkOrder
 const postNewWorkOrder = (request, response) => {
   const { WorkOrderID, WorkOrderMonth, WorkOrderItem, Resid } = request.body
 
@@ -126,6 +126,19 @@ const postNewWorkOrder = (request, response) => {
     response.status(201).json({ status: 'success', message: 'WorkOrder added.' })
   })
 }
+
+//API to delete the seen workorder by the admin
+const deleteWorkOrder = (request, response) => {
+  const { WorkOrderID, WorkOrderMonth, WorkOrderItem, Resid } = request.body
+
+  pool.query('DELETE FROM WorkOrder WHERE WorkOrderID=$1', [WorkOrderID], error => {
+    if (error) {
+      throw error
+    }`
+    response.status(201).json({ status: 'success', message: 'WorkOrder deleted.' })
+  })
+}
+
 //API to post new comment
 const postNewComment = (request, response) => {
   const {  CommentID, CommentBody, CommentTime, Resid, Disid  } = request.body
