@@ -1,8 +1,11 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="MyRez.Views.WorkOrdersPageAdmin">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:listview="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:MyRez.ViewModels" x:Class="MyRez.Views.WorkOrdersPageAdmin">
+<!--<ContentPage.BindingContext>
+    <local:WorkOrdersViewModel x:Name="viewModel"/>
+  </ContentPage.BindingContext>-->
     <ContentPage.Resources>
         <ResourceDictionary>
-            <!--
+            
             <Style x:Key="ProductsListStyle" 
                TargetType="{x:Type ListView}">
                 <Setter Property="RowHeight"
@@ -12,7 +15,7 @@
                 <Setter Property="Margin"
                         Value="0" />
             </Style>
-            -->
+           
             <!--
             <Style x:Key="FilterLabelStyle" 
                TargetType="{x:Type Label}">
@@ -56,29 +59,24 @@
                     HorizontalOptions="Center"
                     VerticalOptions="Center"/>
             </Grid>
-            <ListView
-                x:Name="WorkOrders"       
-                IsVisible="{Binding WorkOrders.Count}"
-                ItemsSource="{Binding WorkOrders}"
-                HasUnevenRows="True"
-                SeparatorVisibility="Default"
-                CachingStrategy="RecycleElement"
-                Style="{StaticResource ProductsListStyle}">
-                <ListView.ItemTemplate>
-      <DataTemplate>
-          <ViewCell>
-              <StackLayout Padding="15,0">
-              <Label Text="{Binding WorkOrderItem}" />
-              <Label Text="{Binding WorkOrderMonth}" />
-              <!-- Mark Checked Button-->
-              <Button Text="Mark Checked"></Button>
-            <Button Text="Delete"></Button> 
-         </StackLayout>
-          </ViewCell>
-      </DataTemplate>
+            <listview:SfListView x:Name="WorkOrders"       
+                ItemsSource="{Binding WorkOrders}">                
+                <listview:SfListView.ItemTemplate>
+                  <DataTemplate>
+                      <ViewCell>
+                          <StackLayout Padding="15,0">
+                          <Label Text="{Binding WorkOrderItem}" />
+                          <Label Text="{Binding WorkOrderMonth}" />
+                          <!-- Mark Checked Button-->
+                          <Button Text="Mark Checked"></Button>
+                        <Button Text="Delete"></Button> 
+                     </StackLayout>
+                      </ViewCell>
+                  </DataTemplate>
        
-    </ListView.ItemTemplate>
-            </ListView>
+                </listview:SfListView.ItemTemplate>
+            </listview:SfListView>
+
         </Grid>
         <!-- INDICATOR -->
         <ActivityIndicator

@@ -13,6 +13,11 @@
     <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.7" />
     <PackageReference Include="Twilio" Version="5.35.0" />
     <PackageReference Include="LiveXAML" Version="2.1.73" />
+    <PackageReference Include="Syncfusion.Licensing" Version="17.3.0.29" />
+    <PackageReference Include="Syncfusion.Xamarin.Core" Version="17.3.0.29" />
+    <PackageReference Include="Syncfusion.Xamarin.SfListView" Version="17.3.0.29" />
+    <PackageReference Include="Syncfusion.Xamarin.DataSource" Version="17.3.0.29" />
+    <PackageReference Include="Syncfusion.Xamarin.GridCommon" Version="17.3.0.29" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="IDBInterface.cs" />

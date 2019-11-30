@@ -30,6 +30,9 @@
   <ItemGroup>
     <PackageReference Include="NUnit" Version="3.12.0" />
     <PackageReference Include="Xamarin.UITest" Version="3.0.3" />
+    <PackageReference Include="Syncfusion.Licensing">
+      <Version>17.3.0.29</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MyRez.iOS\MyRez.iOS.csproj">
