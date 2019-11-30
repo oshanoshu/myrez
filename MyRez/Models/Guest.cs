@@ -2,7 +2,7 @@ using System;
 
 namespace MyRez.Models
 {
-    public class Users
+    public class Guest
     {
         public int GuestID { get; set; }
         public String GuestName { get; set; }

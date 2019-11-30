@@ -25,6 +25,7 @@
     <Compile Remove="Views\MyMasterDetailPage.xaml.cs" />
     <Compile Remove="Views\MyMasterDetailPageDetail.xaml.cs" />
     <Compile Remove="Views\MyMasterDetailPageMenuItem.cs" />
+    <Compile Remove="Models\MainMenuItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />

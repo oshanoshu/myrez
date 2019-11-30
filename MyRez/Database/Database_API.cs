@@ -117,15 +117,15 @@ namespace MyRez.Database
             HttpResponseMessage response = await client.GetAsync("discussions");
             if (response.IsSuccessStatusCode)
             {
-               discussionDB = await response.Content.ReadAsAsync<IEnumerable<Discussions>>();
+               discussionsDB = await response.Content.ReadAsAsync<IEnumerable<Discussions>>();
 
                if (discussionsDB != null)
                     return discussionsDB.ToObservableCollection();
                 else
-                    return new ObservableCollection<discussionsDB>();
+                    return new ObservableCollection<Discussions>();
             }
             else
-                return new ObservableCollection<discussionsDB>();
+                return new ObservableCollection<Discussions>();
 
         }
 
@@ -147,7 +147,7 @@ namespace MyRez.Database
         //Post workorders
         public async void postNewWorkOrderAsync(WorkOrder workorder)
         {
-            HttpResponseMessage response1 = await client.PostAsJsonAsync("workorder");
+            HttpResponseMessage response1 = await client.PostAsJsonAsync("workorder",workorder);
             if (!response1.IsSuccessStatusCode)
             {
                 ////Setting the data to the model
@@ -170,17 +170,17 @@ namespace MyRez.Database
                if (commentsDB != null)
                     return commentsDB.ToObservableCollection();
                 else
-                    return new ObservableCollection<commentsDB>();
+                    return new ObservableCollection<Comments>();
             }
             else
-                return new ObservableCollection<commentsDB>();
+                return new ObservableCollection<Comments>();
 
         }
 
         //Post comments
         public async void postNewCommentsAsync(Comments comments)
         {
-            HttpResponseMessage response1 = await client.PostAsJsonAsync("comments");
+            HttpResponseMessage response1 = await client.PostAsJsonAsync("comments",comments);
             if (!response1.IsSuccessStatusCode)
             {
                 ////Setting the data to the model
@@ -203,17 +203,17 @@ namespace MyRez.Database
                if (finesDB != null)
                     return finesDB.ToObservableCollection();
                 else
-                    return new ObservableCollection<finesDB>();
+                    return new ObservableCollection<Fines>();
             }
             else
-                return new ObservableCollection<finesDB>();
+                return new ObservableCollection<Fines>();
 
         }
 
         //Post Fines
         public async void postNewFineAsync(Fines  fines)
         {
-            HttpResponseMessage response1 = await client.PostAsJsonAsync("fines");
+            HttpResponseMessage response1 = await client.PostAsJsonAsync("fines",fines);
             if (!response1.IsSuccessStatusCode)
             {
                 ////Setting the data to the model
@@ -231,21 +231,21 @@ namespace MyRez.Database
             HttpResponseMessage response = await client.GetAsync("guests");
             if (response.IsSuccessStatusCode)
             {
-                guestsDB = await response.Content.ReadAsAsync<IEnumerable<Guests>>();
+                guestsDB = await response.Content.ReadAsAsync<IEnumerable<Guest>>();
 
                if (guestsDB != null)
                     return guestsDB.ToObservableCollection();
                 else
-                    return new ObservableCollection<guestsDB>();
+                    return new ObservableCollection<Guest>();
             }
             else
-                return new ObservableCollection<guestsDB>();
+                return new ObservableCollection<Guest>();
         }
 
         //Post New Guests
         public async void postNewGuestAsync(Guest guests)
         {
-            HttpResponseMessage response1 = await client.PostAsJsonAsync("guests");
+            HttpResponseMessage response1 = await client.PostAsJsonAsync("guests",guests);
             if (!response1.IsSuccessStatusCode)
             {
                 ////Setting the data to the model
@@ -259,7 +259,7 @@ namespace MyRez.Database
         //Get Emergency Alerts
         public async System.Threading.Tasks.Task<ObservableCollection<EmergencyAlerts>> GetEmergencyAlertsAsync()
         {
-            ObservableCollection<EmergencyAlerts> emergencyalertsDB;
+            IEnumerable<EmergencyAlerts> emergencyalertsDB;
             HttpResponseMessage response = await client.GetAsync("emergencyalerts");
             if (response.IsSuccessStatusCode)
             {
@@ -268,17 +268,17 @@ namespace MyRez.Database
                if (emergencyalertsDB != null)
                     return emergencyalertsDB.ToObservableCollection();
                 else
-                    return new ObservableCollection<emergencyalertsDB>();
+                    return new ObservableCollection<EmergencyAlerts>();
             }
             else
-                return new ObservableCollection<emergencyalertsDB>();
+                return new ObservableCollection<EmergencyAlerts>();
 
         }
 
         //Post Emergency Alerts
         public async void postNewEmergencyAlertsAsync(EmergencyAlerts emergencyalerts)
         {
-            HttpResponseMessage response1 = await client.PostAsJsonAsync("emergencyalerts");
+            HttpResponseMessage response1 = await client.PostAsJsonAsync("emergencyalerts",emergencyalerts);
             if (!response1.IsSuccessStatusCode)
             {
                 ////Setting the data to the model

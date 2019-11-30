@@ -2,7 +2,7 @@ using System;
 
 namespace MyRez.Models
 {
-    public class Users
+    public class EmergencyAlerts
     {
         public int EmergencyID { get; set; }
         public String EmergencyCategory { get; set; }
