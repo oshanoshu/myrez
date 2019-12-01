@@ -87,9 +87,9 @@ const getResidentUsers = (request, response) => {
 
 //API to post new discussion
 const postNewDiscussion = (request, response) => {
-  const { DiscussionId,DiscussionTitle,DiscussionBody, DiscussionTime, ResID} = request.body
+  const { DiscussionTitle, DiscussionBody, DiscussionTime, ResID} = request.body
 
-  pool.query('INSERT INTO Discussions (DiscussionId,DiscussionTitle,DiscussionBody, DiscussionTime, ResID) VALUES ($1, $2, $3, $4, $5)', [DiscussionId,DiscussionTitle,DiscussionBody, DiscussionTime, ResID], error => {
+  pool.query('INSERT INTO Discussions (DiscussionTitle,DiscussionBody, DiscussionTime, ResID) VALUES ($1, $2, $3, $4)', [DiscussionTitle,DiscussionBody, DiscussionTime, ResID], error => {
     if (error) {
       response.status(355).json({ status: 'failed', message: 'Discussion Canceled' })
       throw error
@@ -117,9 +117,9 @@ const getWorkOrder= (request, response) => {
 }
 //API to post new discussion
 const postNewWorkOrder = (request, response) => {
-  const { WorkOrderID, WorkOrderMonth, WorkOrderItem, Resid } = request.body
+  const {WorkOrderMonth, WorkOrderItem, Resid } = request.body
 
-  pool.query('INSERT INTO WorkOrder (WorkOrderID, WorkOrderMonth, WorkOrderItem, Resid) VALUES ($1, $2, $3, $4)', [WorkOrderID, WorkOrderMonth, WorkOrderItem, Resid], error => {
+  pool.query('INSERT INTO WorkOrder (WorkOrderMonth, WorkOrderItem, Resid) VALUES ($1, $2, $3)', [WorkOrderMonth, WorkOrderItem], error => {
     if (error) {
       throw error
     }
@@ -128,9 +128,9 @@ const postNewWorkOrder = (request, response) => {
 }
 //API to post new comment
 const postNewComment = (request, response) => {
-  const {  CommentID, CommentBody, CommentTime, Resid, Disid  } = request.body
+  const { CommentBody, CommentTime, Resid, Disid  } = request.body
 
-  pool.query('INSERT INTO Comments(CommentID, CommentBody, CommentTime, resid, disid  ) VALUES ($1, $2, $3, $4, $5)', [CommentID, CommentBody, CommentTime, Resid, Disid  ], error => {
+  pool.query('INSERT INTO Comments(CommentBody, CommentTime, resid, disid  ) VALUES ($1, $2, $3, $4)', [CommentBody, CommentTime, Resid, Disid  ], error => {
     if (error) {
       throw error
     }
@@ -155,7 +155,7 @@ const postNewFine=(request, response) => {
   AdmID,
   ResID  } = request.body
 
-  pool.query('INSERT INTO Fines(FineID, fineReason, fineAmount, AdmID, ResID ) VALUES ($1, $2, $3, $4, $5)', [FineID, fineReason, fineAmount, AdmID, ResID ], error => {
+  pool.query('INSERT INTO Fines(fineReason, fineAmount, AdmID, ResID ) VALUES ($1, $2, $3, $4)', [fineReason, fineAmount, AdmID, ResID ], error => {
     if (error) {
       throw error
     }
@@ -173,9 +173,9 @@ const getFines= (request, response) => {
 }
 //API to post new guest
 const postNewGuest=(request, response) => {
-  const {    GuestID, GuestName, CheckinTime, ResID  } = request.body
+  const { GuestName, CheckinTime, ResID  } = request.body
 
-  pool.query('INSERT INTO Guest(GuestID, GuestName, CheckinTime, ResID   ) VALUES ($1, $2, $3, $4)', [GuestID, GuestName, CheckinTime, ResID   ], error => {
+  pool.query('INSERT INTO Guest(GuestName, CheckinTime, ResID   ) VALUES ($1, $2, $3)', [GuestName, CheckinTime, ResID   ], error => {
     if (error) {
       throw error
     }
@@ -193,9 +193,9 @@ const getGuests= (request, response) => {
 }
 //API to post new alert
 const postNewEmergencyAlert=(request, response) => {
-  const { EmergencyID, EmergencyCategory, EmergencyMessage, AdmID } = request.body
+  const { EmergencyCategory, EmergencyMessage, AdmID } = request.body
 
-  pool.query('INSERT INTO EmergencyAlerts(EmergencyID, EmergencyCategory, EmergencyMessage, AdmID) VALUES ($1, $2, $3, $4)', [EmergencyID, EmergencyCategory, EmergencyMessage, AdmID], error => {
+  pool.query('INSERT INTO EmergencyAlerts(EmergencyCategory, EmergencyMessage, AdmID) VALUES ($1, $2, $3)', [EmergencyCategory, EmergencyMessage, AdmID], error => {
     if (error) {
       throw error
     }
