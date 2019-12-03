@@ -8,7 +8,7 @@ namespace MyRez.Models
         public String DiscussionTitle { get; set; }
         public String DiscussionBody { get; set; }
         public String DiscussionTime { get; set; }
-        public int ResID { get; set; }
+        public int ResidentID { get; set; }
         
     }
 }
