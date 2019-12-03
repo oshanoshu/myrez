@@ -173,9 +173,9 @@ const getFines= (request, response) => {
 }
 //API to post new guest
 const postNewGuest=(request, response) => {
-  const { GuestName, CheckinTime, ResID  } = request.body
+  const { GuestName, CheckinTime, CheckedIn, ResID  } = request.body
 
-  pool.query('INSERT INTO Guest(GuestName, CheckinTime, ResID   ) VALUES ($1, $2, $3)', [GuestName, CheckinTime, ResID   ], error => {
+  pool.query('INSERT INTO Guest(GuestName, CheckinTime, CheckedIn, ResID   ) VALUES ($1, $2, $3)', [GuestName, CheckinTime, CheckedIn, ResID   ], error => {
     if (error) {
       throw error
     }
@@ -191,6 +191,7 @@ const getGuests= (request, response) => {
     response.status(200).json(results.rows)
   })
 }
+
 //API to post new alert
 const postNewEmergencyAlert=(request, response) => {
   const { EmergencyCategory, EmergencyMessage, AdmID } = request.body
