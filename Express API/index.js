@@ -175,7 +175,7 @@ const getFines= (request, response) => {
 const postNewGuest=(request, response) => {
   const { GuestName, CheckinTime, CheckedIn, ResID  } = request.body
 
-  pool.query('INSERT INTO Guest(GuestName, CheckinTime, CheckedIn, ResID   ) VALUES ($1, $2, $3)', [GuestName, CheckinTime, CheckedIn, ResID   ], error => {
+  pool.query('INSERT INTO Guest(GuestName, CheckinTime, CheckedIn, ResID   ) VALUES ($1, $2, $3, $4)', [GuestName, CheckinTime, CheckedIn, ResID   ], error => {
     if (error) {
       throw error
     }
