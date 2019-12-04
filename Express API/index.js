@@ -128,9 +128,9 @@ const postNewWorkOrder = (request, response) => {
 }
 //API to post new comment
 const postNewComment = (request, response) => {
-  const { CommentBody, CommentTime, Resid, Disid  } = request.body
+  const { CommentBody, CommentTime, ResID, DisID  } = request.body
 
-  pool.query('INSERT INTO Comments(CommentBody, CommentTime, resid, disid  ) VALUES ($1, $2, $3, $4)', [CommentBody, CommentTime, Resid, Disid  ], error => {
+  pool.query('INSERT INTO Comments(CommentBody, CommentTime, resid, disid  ) VALUES ($1, $2, $3, $4)', [CommentBody, CommentTime, ResID, DisID  ], error => {
     if (error) {
       throw error
     }
