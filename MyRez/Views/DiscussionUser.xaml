@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:forms="http://xamarin.com/schemas/2014/forms" xmlns:listview="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms" xmlns:local1="clr-namespace:MyRez.Behavior" x:Class="MyRez.Views.DiscussionUser">
+      <ContentPage.Resources>
+      <ResourceDictionary>
+      <DataTemplate x:Name="HeaderTemplate" x:Key="HeaderTemplate">
+        <Grid BackgroundColor="Maroon" HeightRequest="45">
+          <Label LineBreakMode="NoWrap"
+                 Margin="10" Text="Discussions" FontAttributes="Bold"
+                 FontSize="18" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center"/>
+        </Grid>
+      </DataTemplate>
+      <DataTemplate x:Name="ItemTemplate"  x:Key="ItemTemplate">
+        <Grid x:Name="grid">
+          <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="1" />
+            <RowDefinition Height="40" />
+
+
+           
+          </Grid.RowDefinitions>
+          
+          <Grid>
+            
+            <Grid Padding="5">
+              <Grid.RowDefinitions>
+                <RowDefinition Height="25" />
+                <RowDefinition Height="25" />
+                <RowDefinition Height="*"/>
+              </Grid.RowDefinitions>
+
+               
+              <Label LineBreakMode="NoWrap"
+                     TextColor="#474747"
+
+                     FontAttributes="Bold"
+                     Text="{Binding ResName}">
+                <Label.FontSize>
+                  <OnPlatform x:TypeArguments="x:Double">
+                    <OnPlatform.Android>
+                      <OnIdiom x:TypeArguments="x:Double"
+                               Phone="22"
+                               Tablet="24" />
+                    </OnPlatform.Android>
+                    <OnPlatform.iOS>
+                      <OnIdiom x:TypeArguments="x:Double"
+                               Phone="22"
+                               Tablet="24" />
+                    </OnPlatform.iOS>
+                  </OnPlatform>
+                </Label.FontSize>
+              </Label>
+                <Label Grid.Row="1" 
+                     TextColor="#474747"
+                     Text="{Binding DiscussionTitle}" x:Name="discussionTitle">
+                <Label.FontSize>
+                  <OnPlatform x:TypeArguments="x:Double">
+                    <OnPlatform.Android>
+                      <OnIdiom x:TypeArguments="x:Double"
+                               Phone="20"
+                               Tablet="24" />
+                    </OnPlatform.Android>
+                    <OnPlatform.iOS>
+                      <OnIdiom x:TypeArguments="x:Double"
+                               Phone="22"
+                               Tablet="24" />
+                    </OnPlatform.iOS>
+                  </OnPlatform>
+                </Label.FontSize>
+              </Label>
+               
+                <Label Grid.Row="2" 
+                     TextColor="#474747"
+                     Text="{Binding DiscussionBody}">
+                <Label.FontSize>
+                  <OnPlatform x:TypeArguments="x:Double">
+                    <OnPlatform.Android>
+                      <OnIdiom x:TypeArguments="x:Double"
+                               Phone="18"
+                               Tablet="22" />
+                    </OnPlatform.Android>
+                    <OnPlatform.iOS>
+                      <OnIdiom x:TypeArguments="x:Double"
+                               Phone="18"
+                               Tablet="22" />
+                    </OnPlatform.iOS>
+                  </OnPlatform>
+                </Label.FontSize>
+              </Label>  
+             
+  
+
+             <Grid Grid.Row="0" Margin="5" HorizontalOptions="End">
+             
+              <Label TextColor="#474747"
+                     LineBreakMode="WordWrap"
+                     Text="{Binding DiscussionTime}">
+                <Label.FontSize>
+                  <OnPlatform x:TypeArguments="x:Double">
+                    <OnPlatform.Android>
+                      <OnIdiom x:TypeArguments="x:Double"
+                               Phone="12"
+                               Tablet="14" />
+                    </OnPlatform.Android>
+                    <OnPlatform.iOS>
+                      <OnIdiom x:TypeArguments="x:Double"
+                               Phone="12"
+                               Tablet="14" />
+                    </OnPlatform.iOS>
+                  </OnPlatform>
+                </Label.FontSize>
+              </Label>
+            </Grid>
+           </Grid>
+            </Grid>
+          <Frame Grid.Row="1" OutlineColor="#E4E4E4" HasShadow="True" HeightRequest="1"/>
+          <Button Grid.Row="2" BackgroundColor="Maroon" HorizontalOptions="Center" WidthRequest="100" Text="Comments" FontSize="18" TextColor="White" CornerRadius="10" Clicked="OnButtonClicked"/>
+
+        </Grid>
+      </DataTemplate>
+      </ResourceDictionary>
+  </ContentPage.Resources>
+    <listview:SfListView x:Name="listView" ItemsSource="{Binding Discussions}" ItemTemplate="{StaticResource ItemTemplate}" 
+                   HeaderTemplate="{StaticResource HeaderTemplate}"
+                   AllowSwiping="True" SelectionMode="None" IsStickyHeader="True" SwipeOffset="120" SwipeThreshold="30"
+                   ItemSize="200" HeaderSize="50" >
+        <listview:SfListView.Behaviors>
+            <local1:Behavior/>
+        </listview:SfListView.Behaviors>
+      
+    <listview:SfListView.LeftSwipeTemplate>
+      <DataTemplate x:Name="RightSwipeTemplate">
+        <Grid>
+            <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+          </Grid.ColumnDefinitions>
+        <Grid BackgroundColor="#DC595F" HorizontalOptions="Fill" VerticalOptions="Fill">
+          <Grid VerticalOptions="Center" HorizontalOptions="Center">
+            <Image Grid.Column="0"
+                   Grid.Row="0"
+                   HeightRequest="35"
+                   WidthRequest="35"
+                   BackgroundColor="Transparent"
+                   Source="delete.png" />
+          </Grid>
+        </Grid>
+       </Grid>
+      </DataTemplate>
+    </listview:SfListView.LeftSwipeTemplate>
+  </listview:SfListView>
+    </ContentPage>

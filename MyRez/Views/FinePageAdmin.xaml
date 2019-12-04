@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="MyRez.Views.FinePageAdmin">
+    <ContentPage.Content>
+          <StackLayout>
+            <Grid BackgroundColor="Maroon" HeightRequest="45">
+                      <Label LineBreakMode="NoWrap"
+                             Margin="10" Text="University Housing Fines" FontAttributes="Bold"
+                             FontSize="18" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    </Grid>
+              <Label Text="Resident Name" FontFamily="Georgia" FontSize="25" TextColor="Black"/>
+            <Entry x:Name="residentName" Text="{Binding ResidentName}" Placeholder="Resident Name" FontFamily="Georgia" BackgroundColor="LightGoldenrodYellow" FontSize="25"/>
+            <Label x:Name="amount" Text="Amount" FontFamily="Georgia" FontSize="25" TextColor="Black"/>
+            <Entry x:Name="finedAmount" Text="{Binding FineAmount}" Placeholder="Fine Amount" FontFamily="Georgia" BackgroundColor="LightGoldenrodYellow" FontSize="25"/>
+            <Label Text="Fined Reason" FontFamily="Georgia" FontSize="25" TextColor="Black"/>
+            <Editor x:Name="finedReason" Text="{Binding FineReason}" Placeholder="Add Explanation for Fines" AutoSize="TextChanges" FontFamily="Georgia" BackgroundColor="LightGoldenrodYellow"  FontSize="25" HeightRequest="200"/>
+            <Button Command="{Binding ProcessFines}" Text="Post Fines" TextColor="White" BackgroundColor="Maroon" FontFamily="Georgia" FontSize="25" HorizontalOptions="Center" WidthRequest="180" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="MyRez.Views.GuestsPageUser">
+    <ContentPage.Content>
+        <StackLayout>
+        <Grid BackgroundColor="Maroon" HeightRequest="45">
+          <Label LineBreakMode="NoWrap"
+                 Margin="10" Text="Guests" FontAttributes="Bold"
+                 FontSize="18" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center"/>
+        </Grid>
+        <Label Text=" Guest Full Name" FontSize=" 21" BackgroundColor="WhiteSmoke" TextColor="Black"  FontFamily="Georgia" HorizontalOptions="Center"/>
+        <Entry x:Name="FullName" Text="{Binding GuestName}" Placeholder="Full Name" BackgroundColor="WhiteSmoke" FontFamily="Georgia" FontSize="Default"/>
+        <Grid x:Name="grid" HeightRequest="50" BackgroundColor="Maroon">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*">
+                </ColumnDefinition>
+                <ColumnDefinition Width="*">
+                </ColumnDefinition>
+            </Grid.ColumnDefinitions>
+        
+        <Label Grid.Column="0" x:Name="labelName" Text="{Binding GuestName}" FontSize=" 25" BackgroundColor="Maroon" TextColor="White"  FontFamily="Georgia" HorizontalOptions="Center" Margin="10"/>
+        <Label Grid.Column="1" x:Name="labelName2" Text="{Binding CheckinTime}" FontSize="15" BackgroundColor="Maroon" TextColor="White"  FontFamily="Georgia" HorizontalOptions="Center" Margin="15"/>
+
+        </Grid>
+        <Button x:Name="button" Command="{Binding GuestCheck}" TextColor="White" BackgroundColor="Maroon" FontFamily="Georgia" FontSize="24" HorizontalOptions="Center" Clicked="OnButtonClicked"/>        
+    </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

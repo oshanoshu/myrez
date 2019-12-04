@@ -11,7 +11,7 @@ namespace MyRez
         {
             InitializeComponent();
             
-            if (!Current.Properties.ContainsKey("IsLoggedIn"))
+            if (!Current.Properties.ContainsKey("IsLoggedIn")&& !Current.Properties.ContainsKey("Role"))
             {
                 Current.Properties["IsLoggedIn"] = false;
                 Current.SavePropertiesAsync();
@@ -23,7 +23,10 @@ namespace MyRez
             }
             else
             {
+                if (Current.Properties["Role"]=="admin")
                 MainPage = new NavigationPage(new MenuPageAdmin());
+                else
+                MainPage = new NavigationPage(new MenuPageUser());
             }
             
         }

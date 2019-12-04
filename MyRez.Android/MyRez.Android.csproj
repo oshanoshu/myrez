@@ -70,6 +70,20 @@
     <PackageReference Include="Syncfusion.Licensing">
       <Version>17.3.0.29</Version>
     </PackageReference>
+    <PackageReference Include="Syncfusion.Xamarin.Core">
+      <Version>17.3.0.29</Version>
+    </PackageReference>
+    <PackageReference Include="Syncfusion.Xamarin.Buttons">
+      <Version>17.3.0.29</Version>
+    </PackageReference>
+    <PackageReference Include="Mobile.BuildTools">
+      <Version>1.4.0.638</Version>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Judopay">
+      <Version>5.2.0</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
@@ -107,9 +121,6 @@
       <Project>{07B567C5-D2D1-48F3-9A28-5A065D3349A9}</Project>
       <Name>MyRez</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\MyRez.db" />
   </ItemGroup>
  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

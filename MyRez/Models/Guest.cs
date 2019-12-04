@@ -8,5 +8,6 @@ namespace MyRez.Models
         public String GuestName { get; set; }
         public String CheckinTime { get; set; }
         public int ResID { get; set; }
+        public bool CheckedIn { get; set; }
     }
 }

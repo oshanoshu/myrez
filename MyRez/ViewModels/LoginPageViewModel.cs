@@ -10,6 +10,7 @@ using System.Net.Http.Headers;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using MyRez.Database;
+using System.Collections.ObjectModel;
 
 namespace MyRez.ViewModels
 {
@@ -23,7 +24,7 @@ namespace MyRez.ViewModels
         }
         
         
-        List<LoginSignUp> loginDetailsDB;
+        ObservableCollection<LoginSignUp> loginDetailsDB;
         string username=string.Empty;
         string password=string.Empty;
         bool isLogged = false;
@@ -69,15 +70,29 @@ namespace MyRez.ViewModels
             }
             for(int i=0;i<loginDetailsDB.Count;i++)
             {
-                if (string.Equals(loginDetailsDB[i].username,Username.ToLower()))
+                if (string.Equals(loginDetailsDB[i].Username,Username.ToLower()))
                 {
-                    if (string.Equals(loginDetailsDB[i].password, password.ToLower()))
+                    if (string.Equals(loginDetailsDB[i].Password, password.ToLower()))
                     {
                         isLoggedIn = true;
                         OnPropertyChanged(nameof(isLoggedIn));
                         Application.Current.Properties["IsLoggedIn"] = true;
-                        await Application.Current.SavePropertiesAsync();
-                        Application.Current.MainPage = new NavigationPage(new MenuPageAdmin());
+
+                        if (loginDetailsDB[i].Role.Equals("admin"))
+                        {
+                            Application.Current.Properties["Username"] = loginDetailsDB[i].Username;
+                            Application.Current.Properties["Role"] = loginDetailsDB[i].Role;
+                            await Application.Current.SavePropertiesAsync();
+                            Application.Current.MainPage = new NavigationPage(new MenuPageAdmin());
+                        }
+                        else
+                        {
+                            Application.Current.Properties["Username"] = loginDetailsDB[i].Username;
+                            Application.Current.Properties["Role"] = loginDetailsDB[i].Role;
+                            await Application.Current.SavePropertiesAsync();
+                            Application.Current.MainPage = new NavigationPage(new MenuPageUser());
+                        }
+
                     }
                 }
             }

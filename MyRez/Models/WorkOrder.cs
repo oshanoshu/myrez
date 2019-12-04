@@ -7,5 +7,6 @@ namespace MyRez.Models
             public String WorkOrderMonth { get; set; }
             public String WorkOrderItem { get; set; }
             public int ResId { get; set; }
+            public String ResName { get; set; }
     }
 }

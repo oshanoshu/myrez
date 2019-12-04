@@ -1,6 +1,37 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="MyRez.Views.EmergencyAlertsPageAdmin">
     <ContentPage.Content>
-        <Label Text="This is where you will be able to send emergency alerts." />
-    </ContentPage.Content>
+  <StackLayout BackgroundColor="Azure">
+<Grid BackgroundColor="Maroon" HeightRequest="45">
+          <Label LineBreakMode="NoWrap"
+                 Margin="10" Text="Emergency Alerts" FontAttributes="Bold"
+                 FontSize="20" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center"/>
+        </Grid>
+      
+      <Label Margin="5" Text="Emergency Category" FontSize="26" TextColor="Black"/>
+      <Grid Margin="10, 0">
+        <Picker x:Name="picker"
+        Title="Select a category"
+        TitleColor="Gray" FontSize="25" BackgroundColor="LightGoldenrodYellow">
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>Active Shooter Alerts</x:String>
+                    <x:String>Bomb Threat Alerts</x:String>
+                    <x:String>Fire Alerts</x:String>
+                    <x:String>Hurricane Alerts</x:String>
+                    <x:String>Sex Trafficer Alerts</x:String>
+                    <x:String>Snow Alerts</x:String>
+                    <x:String>Tornado Alerts</x:String>
+                    <x:String>Other Alerts</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+          </Grid>
+        
+        <Label Margin="5" Text="Emergency Message" FontSize="26" TextColor="Black"/>
+        <Grid Margin="10,0">
+        <Editor Placeholder="Add Description" BackgroundColor="LightGoldenrodYellow" FontSize="25" PlaceholderColor="Gray"  AutoSize="TextChanges" HeightRequest="200" x:Name="editor"/>
+        </Grid>
+        <Button Clicked="OnButtonClickedAsync" Text="Post Alert" HorizontalOptions="Center" BackgroundColor="Maroon" TextColor="White" FontSize="25" CornerRadius="10" WidthRequest="200"/>
+    </StackLayout>    </ContentPage.Content>
 </ContentPage>

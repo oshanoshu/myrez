@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="MyRez.Views.WorkOrderPageUser">
+    <ContentPage.Content>
+        <StackLayout>
+        <Grid BackgroundColor="Maroon" HeightRequest="45">
+          <Label LineBreakMode="NoWrap"
+                 Margin="10" Text="WorkOrder" FontAttributes="Bold"
+                 FontSize="18" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center"/>
+        </Grid>
+        <Label Text="Work order item" FontSize="24"  FontFamily="Georgia" TextColor="black" BackgroundColor="WhiteSmoke"/>
+        <Entry x:Name="workOrderItem" Text="{Binding WorkOrderItem}" Placeholder="Add Item" BackgroundColor="WhiteSmoke" FontFamily="Georgia" FontSize="Default" Keyboard="Text"/>
+        <Button Command="{Binding ProcessWorkOrder}" Text="Submit Work Order" TextColor="White" BackgroundColor="Maroon" FontFamily="Georgia" FontSize="22" HorizontalOptions="Center"/>
+        
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

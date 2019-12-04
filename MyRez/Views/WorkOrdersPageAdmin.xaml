@@ -1,97 +1,128 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:listview="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:MyRez.ViewModels" x:Class="MyRez.Views.WorkOrdersPageAdmin">
-<!--<ContentPage.BindingContext>
-    <local:WorkOrdersViewModel x:Name="viewModel"/>
-  </ContentPage.BindingContext>-->
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            
-            <Style x:Key="ProductsListStyle" 
-               TargetType="{x:Type ListView}">
-                <Setter Property="RowHeight"
-                        Value="400" />
-                <Setter Property="VerticalOptions"
-                        Value="Center" />
-                <Setter Property="Margin"
-                        Value="0" />
-            </Style>
-           
-            <!--
-            <Style x:Key="FilterLabelStyle" 
-               TargetType="{x:Type Label}">
-                <Setter Property="TextColor"
-                        Value="{StaticResource WhiteColor}" />
-                <Setter Property="HorizontalOptions"
-                        Value="Center" />
-                <Setter Property="VerticalOptions"
-                        Value="Center" />
-            </Style>
-            -->
-        </ResourceDictionary>
-    </ContentPage.Resources>
-    <Grid  
-        ColumnSpacing="0"
-        RowSpacing="0">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="20" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-        <!--
-        <Grid
-            BackgroundColor="{StaticResource LightGreenColor}">
-            <Label 
-                Text="FILTER"
-                Style="{StaticResource FilterLabelStyle}"/>
-            <Grid.GestureRecognizers>
-                <TapGestureRecognizer 
-                        Tapped="OnFilterChanged"
-                        NumberOfTapsRequired="1" />
-            </Grid.GestureRecognizers>
-        </Grid>
-        CATALOG -->
-        <Grid  
-            Grid.Row="1">
-            <Grid 
-                IsVisible="{Binding IsBusy}">
-                <Label 
-                    Text="NO WorkOrders FOUND"      
-                    IsVisible="{Binding WorkOrders.Count}"
-                    HorizontalOptions="Center"
-                    VerticalOptions="Center"/>
-            </Grid>
-            <listview:SfListView x:Name="WorkOrders"       
-                ItemsSource="{Binding WorkOrders}">                
-                <listview:SfListView.ItemTemplate>
-                  <DataTemplate>
-                      <ViewCell>
-                          <StackLayout Padding="15,0">
-                          <Label Text="{Binding WorkOrderItem}" />
-                          <Label Text="{Binding WorkOrderMonth}" />
-                          <!-- Mark Checked Button-->
-                          <Button Text="Mark Checked"></Button>
-                        <Button Text="Delete"></Button> 
-                     </StackLayout>
-                      </ViewCell>
-                  </DataTemplate>
-       
-                </listview:SfListView.ItemTemplate>
-            </listview:SfListView>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:gradient ="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms" xmlns:listview="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local1="clr-namespace:MyRez.Behavior" x:Class="MyRez.Views.WorkOrdersPageAdmin">
 
+    <ContentPage.Resources>
+    <ResourceDictionary>
+      <DataTemplate x:Name="HeaderTemplate" x:Key="HeaderTemplate">
+        <Grid BackgroundColor="Maroon" HeightRequest="45">
+          <Label LineBreakMode="NoWrap"
+                 Margin="10" Text="WorkOrder" FontAttributes="Bold"
+                 FontSize="18" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center"/>
         </Grid>
-        <!-- INDICATOR -->
-        <ActivityIndicator
-            Grid.Row="0"
-            Grid.RowSpan="2"
-            IsRunning="{Binding IsBusy}"  
-            IsVisible="{Binding IsBusy}"
-            VerticalOptions="Center"
-            HorizontalOptions="Center">
-            <ActivityIndicator.WidthRequest>
-                <OnPlatform x:TypeArguments="x:Double">
-                    <On Platform="iOS, Android" Value="100" />
-                    <On Platform="UWP, WinRT, WinPhone" Value="400" />
-                </OnPlatform>
-            </ActivityIndicator.WidthRequest>
-        </ActivityIndicator>
-    </Grid>
+      </DataTemplate>
+      <DataTemplate x:Name="ItemTemplate"  x:Key="ItemTemplate">
+        <Grid x:Name="grid">
+          <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="1" />
+          </Grid.RowDefinitions>
+          <Grid>
+            <Grid Padding="5">
+              <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+              </Grid.RowDefinitions>
+              <Label LineBreakMode="NoWrap"
+                     TextColor="#474747"
+                     FontAttributes="Bold"
+                     Text="{Binding ResName}">
+                <Label.FontSize>
+                  <OnPlatform x:TypeArguments="x:Double">
+                    <OnPlatform.WinPhone>
+                      <OnIdiom x:TypeArguments="x:Double" Phone="18" Tablet="20" />
+                    </OnPlatform.WinPhone>
+                    <OnPlatform.Android>
+                      <OnIdiom x:TypeArguments="x:Double"
+                               Phone="24"
+                               Tablet="26" />
+                    </OnPlatform.Android>
+                    <OnPlatform.iOS>
+                      <OnIdiom x:TypeArguments="x:Double"
+                               Phone="24"
+                               Tablet="26" />
+                    </OnPlatform.iOS>
+                  </OnPlatform>
+                </Label.FontSize>
+              </Label>
+              <Label LineBreakMode="NoWrap"
+                     TextColor="#474747"
+                     Grid.Row="1"
+                     Text="{Binding WorkOrderItem}">
+                <Label.FontSize>
+                  <OnPlatform x:TypeArguments="x:Double">
+                    <OnPlatform.WinPhone>
+                      <OnIdiom x:TypeArguments="x:Double" Phone="16" Tablet="20" />
+                    </OnPlatform.WinPhone>
+                    <OnPlatform.Android>
+                      <OnIdiom x:TypeArguments="x:Double"
+                               Phone="20"
+                               Tablet="22" />
+                    </OnPlatform.Android>
+                    <OnPlatform.iOS>
+                      <OnIdiom x:TypeArguments="x:Double"
+                               Phone="20"
+                               Tablet="22" />
+                    </OnPlatform.iOS>
+                  </OnPlatform>
+                </Label.FontSize>
+              </Label>
+              <Label TextColor="#474747"
+                       Grid.Row="2"
+                     LineBreakMode="NoWrap"
+                     Text="{Binding WorkOrderMonth}">
+                <Label.FontSize>
+                  <OnPlatform x:TypeArguments="x:Double">
+                    <OnPlatform.WinPhone>
+                      <OnIdiom x:TypeArguments="x:Double" Phone="12" Tablet="12" />
+                    </OnPlatform.WinPhone>
+                    <OnPlatform.Android>
+                      <OnIdiom x:TypeArguments="x:Double"
+                               Phone="16"
+                               Tablet="18" />
+                    </OnPlatform.Android>
+                    <OnPlatform.iOS>
+                      <OnIdiom x:TypeArguments="x:Double"
+                               Phone="16"
+                               Tablet="18" />
+                    </OnPlatform.iOS>
+                  </OnPlatform>
+                </Label.FontSize>
+              </Label>
+            </Grid>
+          </Grid>
+          <Frame Grid.Row="1" OutlineColor="#E4E4E4" HasShadow="True" HeightRequest="1"/>
+        </Grid>
+      </DataTemplate>
+    </ResourceDictionary>
+  </ContentPage.Resources>
+
+  <listview:SfListView x:Name="listView" ItemsSource="{Binding WorkOrders}" ItemTemplate="{StaticResource ItemTemplate}" 
+                   HeaderTemplate="{StaticResource HeaderTemplate}"
+                   AllowSwiping="True" SelectionMode="None" IsStickyHeader="True" SwipeOffset="120" SwipeThreshold="30"
+                   ItemSize="200" HeaderSize="50" >
+        <!--<sync:SfListView.Behaviors>
+            <local1:Behavior/>
+        </sync:SfListView.Behaviors>-->
+      
+    <listview:SfListView.RightSwipeTemplate>
+      <DataTemplate x:Name="RightSwipeTemplate">
+        <Grid>
+            <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+          </Grid.ColumnDefinitions>
+        <Grid BackgroundColor="#DC595F" HorizontalOptions="Fill" VerticalOptions="Fill">
+          <Grid VerticalOptions="Center" HorizontalOptions="Center">
+            <Image Grid.Column="0"
+                   Grid.Row="0"
+                   HeightRequest="35"
+                   WidthRequest="35"
+                   BackgroundColor="Transparent"
+                   Source="delete.png" />
+          </Grid>
+        </Grid>
+       </Grid>
+      </DataTemplate>
+    </listview:SfListView.RightSwipeTemplate>
+  </listview:SfListView>
 </ContentPage>

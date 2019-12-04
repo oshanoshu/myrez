@@ -17,15 +17,17 @@ namespace MyRez.Views
             // Build the Menu
             MainMenuItems = new List<MainMenuItem>()
         {
-            new MainMenuItem() { Title = "Discussions", Icon = "menu_inbox.png", TargetType = typeof(DiscussionPageAdmin) },
-            new MainMenuItem() { Title = "Work Orders", Icon = "menu_stock.png", TargetType = typeof(WorkOrdersPageAdmin) },
-            new MainMenuItem() { Title = "Emergency Alerts", Icon = "menu_stock.png", TargetType = typeof(EmergencyAlertsPageAdmin) },
-            new MainMenuItem() { Title = "Log Out", Icon = "menu_stock.png"}
+            new MainMenuItem() { Title = "Discussions", Icon="discussion.png", TargetType = typeof(DiscussionAdmin) },
+            new MainMenuItem() { Title = "Work Orders", Icon="workorder.png", TargetType = typeof(WorkOrdersPageAdmin) },
+            new MainMenuItem() { Title = "Emergency Alerts", Icon="alerts.png", TargetType = typeof(EmergencyAlertsPageAdmin) },
+            new MainMenuItem() { Title = "Fines", Icon="fines.png", TargetType = typeof(FinePageAdmin) },
+            new MainMenuItem() { Title = "Guests", Icon="guests.png", TargetType = typeof(GuestsPageAdmin) },
+            new MainMenuItem() { Title = "Log Out"}
 
         };
 
             // Set the default page, this is the "home" page.
-            Detail = new NavigationPage(new DiscussionPageAdmin());
+            Detail = new NavigationPage(new DiscussionAdmin());
 
             InitializeComponent();
         }
@@ -37,7 +39,7 @@ namespace MyRez.Views
             {
                 if (item.Title.Equals("Discussions"))
                 {
-                    Detail = new NavigationPage(new DiscussionPageAdmin());
+                    Detail = new NavigationPage(new DiscussionAdmin());
                 }
                 else if (item.Title.Equals("Work Orders"))
                 {
@@ -46,6 +48,14 @@ namespace MyRez.Views
                 else if (item.Title.Equals("Emergency Alerts"))
                 {
                     Detail = new NavigationPage(new EmergencyAlertsPageAdmin());
+                }
+                else if (item.Title.Equals("Fines"))
+                {
+                    Detail = new NavigationPage(new FinePageAdmin());
+                }
+                else if (item.Title.Equals("Guests"))
+                {
+                    Detail = new NavigationPage(new GuestsPageAdmin());
                 }
                 else if (item.Title.Equals("Log Out"))
                 {
@@ -59,5 +69,6 @@ namespace MyRez.Views
                 IsPresented = false;
             }
         }
+        
     }
 }

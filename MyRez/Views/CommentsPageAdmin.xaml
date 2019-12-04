@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:listview="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms" x:Class="MyRez.Views.CommentsPageAdmin">
+        <!-- INDICATOR -->
+    <!-- Undo this part
+        <ActivityIndicator
+            Grid.Row="0"
+            Grid.RowSpan="2"
+            IsRunning="{Binding IsBusy}"  
+            IsVisible="{Binding IsBusy}"
+            VerticalOptions="Center"
+            HorizontalOptions="Center">
+            <ActivityIndicator.WidthRequest>
+                <OnPlatform x:TypeArguments="x:Double">
+                    <On Platform="iOS, Android" Value="100" />
+                    <On Platform="UWP, WinRT, WinPhone" Value="400" />
+                </OnPlatform>
+            </ActivityIndicator.WidthRequest>
+        </ActivityIndicator>
+    </Grid>
+    -->
+    <ContentPage.Resources>
+    <ResourceDictionary>
+
+      <DataTemplate x:Name="HeaderTemplate" x:Key="HeaderTemplate">
+        <Grid BackgroundColor="Maroon" HeightRequest="45">
+          <Label LineBreakMode="NoWrap"
+                 Margin="10" Text="Comments" FontAttributes="Bold"
+                 FontSize="18" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center"/>
+        </Grid>
+      </DataTemplate>
+      <DataTemplate x:Name="ItemTemplate"  x:Key="ItemTemplate">
+        <Grid x:Name="grid">
+          <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="1" />
+           
+
+           
+          </Grid.RowDefinitions>
+          
+          <Grid>
+            
+            <Grid Padding="5">
+              <Grid.RowDefinitions>
+                <RowDefinition Height="25" />
+                <RowDefinition Height="*" />
+              </Grid.RowDefinitions>
+
+               
+              <Label LineBreakMode="NoWrap"
+                     TextColor="#474747"
+
+                     FontAttributes="Bold"
+                     Text="{Binding ResName}">
+                <Label.FontSize>
+                  <OnPlatform x:TypeArguments="x:Double">
+                    <OnPlatform.Android>
+                      <OnIdiom x:TypeArguments="x:Double"
+                               Phone="22"
+                               Tablet="24" />
+                    </OnPlatform.Android>
+                    <OnPlatform.iOS>
+                      <OnIdiom x:TypeArguments="x:Double"
+                               Phone="22"
+                               Tablet="24" />
+                    </OnPlatform.iOS>
+                  </OnPlatform>
+                </Label.FontSize>
+                
+              </Label>
+                <ScrollView Grid.Row="1" >
+                <Label 
+                     TextColor="#474747"
+                     Text="{Binding CommentBody}">
+                <Label.FontSize>
+                  <OnPlatform x:TypeArguments="x:Double">
+                    <OnPlatform.Android>
+                      <OnIdiom x:TypeArguments="x:Double"
+                               Phone="20"
+                               Tablet="24" />
+                    </OnPlatform.Android>
+                    <OnPlatform.iOS>
+                      <OnIdiom x:TypeArguments="x:Double"
+                               Phone="22"
+                               Tablet="24" />
+                    </OnPlatform.iOS>
+                  </OnPlatform>
+                </Label.FontSize>
+              </Label>
+             </ScrollView>
+             
+  
+
+             <Grid Grid.Row="0" Margin="5" HorizontalOptions="End">
+             
+              <Label TextColor="#474747"
+                     LineBreakMode="WordWrap"
+                     Text="{Binding CommentTime}">
+                <Label.FontSize>
+                  <OnPlatform x:TypeArguments="x:Double">
+                    <OnPlatform.Android>
+                      <OnIdiom x:TypeArguments="x:Double"
+                               Phone="12"
+                               Tablet="14" />
+                    </OnPlatform.Android>
+                    <OnPlatform.iOS>
+                      <OnIdiom x:TypeArguments="x:Double"
+                               Phone="12"
+                               Tablet="14" />
+                    </OnPlatform.iOS>
+                  </OnPlatform>
+                </Label.FontSize>
+              </Label>
+            </Grid>
+           </Grid>
+            </Grid>
+          <Frame Grid.Row="1" OutlineColor="#E4E4E4" HasShadow="True" HeightRequest="1"/>
+            
+        </Grid>
+      </DataTemplate>
+    </ResourceDictionary>
+  </ContentPage.Resources>
+<StackLayout>
+  <listview:SfListView x:Name="listView" ItemsSource="{Binding Comments}" ItemTemplate="{StaticResource ItemTemplate}" 
+                   HeaderTemplate="{StaticResource HeaderTemplate}"
+                   SelectionMode="None" ItemSize="125">
+        
+  </listview:SfListView>
+ </StackLayout>
+</ContentPage>

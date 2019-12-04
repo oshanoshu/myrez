@@ -8,16 +8,16 @@
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="4.2.0.709249" />
     <PackageReference Include="Xamarin.Essentials" Version="1.2.0" />
-    <PackageReference Include="sqlite-net-pcl" Version="1.6.292" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
     <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.7" />
     <PackageReference Include="Twilio" Version="5.35.0" />
     <PackageReference Include="LiveXAML" Version="2.1.73" />
-    <PackageReference Include="Syncfusion.Licensing" Version="17.3.0.29" />
-    <PackageReference Include="Syncfusion.Xamarin.Core" Version="17.3.0.29" />
     <PackageReference Include="Syncfusion.Xamarin.SfListView" Version="17.3.0.29" />
     <PackageReference Include="Syncfusion.Xamarin.DataSource" Version="17.3.0.29" />
     <PackageReference Include="Syncfusion.Xamarin.GridCommon" Version="17.3.0.29" />
+    <PackageReference Include="Syncfusion.Xamarin.Core" Version="17.3.0.29" />
+    <PackageReference Include="Syncfusion.Xamarin.Buttons" Version="17.3.0.29" />
+    <PackageReference Include="Xamarin.Judopay" Version="5.2.0" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="IDBInterface.cs" />
@@ -25,7 +25,8 @@
     <Compile Remove="Views\MyMasterDetailPage.xaml.cs" />
     <Compile Remove="Views\MyMasterDetailPageDetail.xaml.cs" />
     <Compile Remove="Views\MyMasterDetailPageMenuItem.cs" />
-    <Compile Remove="Models\MainMenuItem.cs" />
+    <Compile Remove="Views\DiscussionPageAdmin.xaml.cs" />
+    <Compile Remove="Views\DiscussionAdmin.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
@@ -36,20 +37,25 @@
     <Folder Include="Database\" />
     <Folder Include="Services\" />
     <Folder Include="Extensions\" />
+    <Folder Include="Behavior\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Mono.Android">
       <HintPath>..\..\..\..\..\Library\Frameworks\Xamarin.Android.framework\Versions\10.0.3.0\lib\xamarin.android\xbuild-frameworks\MonoAndroid\v9.0\Mono.Android.dll</HintPath>
     </Reference>
+    <Reference Include="Mono.Android">
+      <HintPath>..\..\..\..\..\Library\Frameworks\Xamarin.Android.framework\Versions\10.0.6.2\lib\xamarin.android\xbuild-frameworks\MonoAndroid\v9.0\Mono.Android.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Remove="Views\MyPage.xaml" />
     <EmbeddedResource Remove="Views\SignupPage.xaml" />
     <EmbeddedResource Remove="Views\SignUpPageUset.xaml" />
     <EmbeddedResource Remove="Views\MyMasterDetailPageMaster.xaml" />
     <EmbeddedResource Remove="Views\MyMasterDetailPage.xaml" />
     <EmbeddedResource Remove="Views\MyMasterDetailPageDetail.xaml" />
     <EmbeddedResource Remove="Views\MenuPage.xaml" />
+    <EmbeddedResource Remove="Views\DiscussionPageAdmin.xaml" />
+    <EmbeddedResource Remove="Views\MainPage.xaml" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Views\SignupPageAdmin.xaml.cs~" />
@@ -61,5 +67,9 @@
     <None Remove="Views\res1.png" />
     <None Remove="Views\res.png" />
     <None Remove="Models\Residents.cs~" />
+    <None Remove="Views\DiscussionPageAdmin.xaml.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="**/*" />
   </ItemGroup>
 </Project>

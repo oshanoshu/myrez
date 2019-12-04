@@ -38,39 +38,83 @@ namespace MyRez.Database
         }
 
         //Get userverification details
-        public async System.Threading.Tasks.Task<List<MockUsers>> GetUsersVerificationAsync()
+        public async System.Threading.Tasks.Task<ObservableCollection<MockUsers>> GetUsersVerificationAsync()
         {
-            List<MockUsers> mockUsers;
+            IEnumerable<MockUsers> mockUsers;
             HttpResponseMessage response = await client.GetAsync("mockusers");
             if (response.IsSuccessStatusCode)
             {
                 //Setting the data to the model
-                return mockUsers = await response.Content.ReadAsAsync<List<MockUsers>>();
+                mockUsers = await response.Content.ReadAsAsync<IEnumerable<MockUsers>>();
+                if (mockUsers != null)
+                    return mockUsers.ToObservableCollection();
+                else
+                    return new ObservableCollection<MockUsers>();
             }
             Console.WriteLine("Internal server Error");
-            return mockUsers = null;
+            return new ObservableCollection<MockUsers>();
 
         }
 
         //Get login details
-        public async System.Threading.Tasks.Task<List<LoginSignUp>> GetUsersAsync()
+        public async System.Threading.Tasks.Task<ObservableCollection<LoginSignUp>> GetUsersAsync()
         {
-            List<LoginSignUp> loginDetailsDB;
+            IEnumerable<LoginSignUp> loginDetailsDB;
             HttpResponseMessage response = await client.GetAsync("users");
             if (response.IsSuccessStatusCode)
             {
                 //Setting the data to the model
-                return loginDetailsDB = await response.Content.ReadAsAsync<List<LoginSignUp>>();
+                loginDetailsDB = await response.Content.ReadAsAsync<IEnumerable<LoginSignUp>>();
+                return loginDetailsDB.ToObservableCollection();
             }
             Console.WriteLine("Internal server Error");
-            return loginDetailsDB = null;
+            return new ObservableCollection<LoginSignUp>();
             
+        }
+
+        //Get resident users
+        public async System.Threading.Tasks.Task<ObservableCollection<Residents>> GetResidentsAsync()
+        {
+            IEnumerable<Residents> discussionsDB;
+            HttpResponseMessage response = await client.GetAsync("userresident");
+            if (response.IsSuccessStatusCode)
+            {
+                discussionsDB = await response.Content.ReadAsAsync<IEnumerable<Residents>>();
+
+                if (discussionsDB != null)
+                    return discussionsDB.ToObservableCollection();
+                else
+                    return new ObservableCollection<Residents>();
+            }
+            else
+                return new ObservableCollection<Residents>();
+
+        }
+
+
+        //Get admin users
+        public async System.Threading.Tasks.Task<ObservableCollection<Administrators>> GetAdministratorsAsync()
+        {
+            IEnumerable<Administrators> discussionsDB;
+            HttpResponseMessage response = await client.GetAsync("useradmin");
+            if (response.IsSuccessStatusCode)
+            {
+                discussionsDB = await response.Content.ReadAsAsync<IEnumerable<Administrators>>();
+
+                if (discussionsDB != null)
+                    return discussionsDB.ToObservableCollection();
+                else
+                    return new ObservableCollection<Administrators>();
+            }
+            else
+                return new ObservableCollection<Administrators>();
+
         }
 
         //Post New Admin User
         public async void SignUpAdminUsersAsync(LoginSignUp loginSignUp, Administrators administrators)
         {
-            loginSignUp.role = "Admin";
+            loginSignUp.Role = "Admin";
 
             HttpResponseMessage response1 = await client.PostAsJsonAsync("users", loginSignUp);
             if (!response1.IsSuccessStatusCode)
@@ -92,7 +136,7 @@ namespace MyRez.Database
         //Post New  User
         public async void SignUpResidentUsersAsync(LoginSignUp loginSignUp, Residents residents)
         {
-            loginSignUp.role = "Resident";
+            loginSignUp.Role = "user";
             HttpResponseMessage response1 = await client.PostAsJsonAsync("users", loginSignUp);
             if (!response1.IsSuccessStatusCode)
             {

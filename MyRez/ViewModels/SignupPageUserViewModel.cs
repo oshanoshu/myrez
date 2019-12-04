@@ -20,10 +20,10 @@ namespace MyRez.ViewModels
         {
             if (Validate())
             {
-                logindetails.username = residents.Username;
+                logindetails.Username = residents.Username;
                 Database_API database = new Database_API();
                 database.SignUpResidentUsersAsync(logindetails, residents);
-                Application.Current.MainPage = new NavigationPage(new MenuPageAdmin());
+                Application.Current.MainPage = new NavigationPage(new MenuPageUser());
             }
             else
             {
@@ -190,13 +190,13 @@ namespace MyRez.ViewModels
         {
             get
             {
-                return logindetails.password;
+                return logindetails.Password;
             }
             set
             {
-                if (value != logindetails.password)
+                if (value != logindetails.Password)
                 {
-                    logindetails.password = value;
+                    logindetails.Password = value;
                     OnPropertyChanged();
                 }
             }

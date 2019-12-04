@@ -10,7 +10,7 @@ namespace MyRez.Views
         public WorkOrdersPageAdmin()
         {
             InitializeComponent();
-            BindingContext = new WorkOrdersViewModel();
+            BindingContext = new WorkOrdersAdminViewModel();
         }
     }
 }
