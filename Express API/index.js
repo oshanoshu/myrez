@@ -149,7 +149,7 @@ const getComments= (request, response) => {
 
 //API to post new fine
 const postNewFine=(request, response) => {
-  const {  FineID,
+  const {
   fineReason,
   fineAmount,
   AdmID,
