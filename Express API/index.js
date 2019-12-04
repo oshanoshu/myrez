@@ -119,7 +119,7 @@ const getWorkOrder= (request, response) => {
 const postNewWorkOrder = (request, response) => {
   const {WorkOrderMonth, WorkOrderItem, Resid } = request.body
 
-  pool.query('INSERT INTO WorkOrder (WorkOrderMonth, WorkOrderItem, Resid) VALUES ($1, $2, $3)', [WorkOrderMonth, WorkOrderItem], error => {
+  pool.query('INSERT INTO WorkOrder (WorkOrderMonth, WorkOrderItem, Resid) VALUES ($1, $2, $3)', [WorkOrderMonth, WorkOrderItem, Resid], error => {
     if (error) {
       throw error
     }
