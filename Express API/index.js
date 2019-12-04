@@ -117,9 +117,9 @@ const getWorkOrder= (request, response) => {
 }
 //API to post new discussion
 const postNewWorkOrder = (request, response) => {
-  const {WorkOrderMonth, WorkOrderItem, Resid } = request.body
+  const {WorkOrderMonth, WorkOrderItem, ResId } = request.body
 
-  pool.query('INSERT INTO WorkOrder (WorkOrderMonth, WorkOrderItem, Resid) VALUES ($1, $2, $3)', [WorkOrderMonth, WorkOrderItem, Resid], error => {
+  pool.query('INSERT INTO WorkOrder (WorkOrderMonth, WorkOrderItem, ResId) VALUES ($1, $2, $3)', [WorkOrderMonth, WorkOrderItem, Resid], error => {
     if (error) {
       throw error
     }
