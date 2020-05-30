@@ -24,6 +24,7 @@ namespace MyRez.ViewModels
         {
             residents = await database_API.GetResidentsAsync();
             workOrder = ProcessWorkOrderWithNameAsync(workOrder);
+            workOrder.WorkOrderMonth = DateTime.Now.ToString("MMMM dd");
             database_API.postNewWorkOrderAsync(workOrder);
         }
 
@@ -39,8 +40,11 @@ namespace MyRez.ViewModels
         {
             get { return workOrder.WorkOrderItem; }
             set {
-                value = workOrder.WorkOrderItem;
-                OnPropertyChanged("WorkOrderItem");
+                if (value != workOrder.WorkOrderItem)
+                {
+                    workOrder.WorkOrderItem = value;
+                    OnPropertyChanged("WorkOrderItem");
+                }
             }
         }
         public String WorkOrderMonth

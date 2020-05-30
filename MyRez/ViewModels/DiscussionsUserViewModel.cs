@@ -13,6 +13,7 @@ namespace MyRez.ViewModels
     {
         private ObservableCollection<Discussions> discussions;
         private ObservableCollection<Residents> residents;
+        Database_API database_API = new Database_API();
 
         private int itemIndex = -1;
         public bool IsBusy
@@ -27,13 +28,24 @@ namespace MyRez.ViewModels
         public DiscussionsUserViewModel()
         {
             dataDiscussions();
-            DeleteDiscussions = new Command(() => DeleteDiscussionsAsync());
+            ProcessDiscussion = new Command(() => PostDiscussionsAsync());
         }
 
-        private void DeleteDiscussionsAsync()
+        private async void PostDiscussionsAsync()
         {
-
+            residents = await database_API.GetResidentsAsync();
+            discussion = ProcessDiscussionsWithNameAsync(discussion);
+            discussion.DiscussionTime = DateTime.Now.ToString("dd MMMM yyyy HH:mm");
+            database_API.postNewDiscussionsAsync(discussion);
             //var item = discussions[itemIndex];
+        }
+
+        private Discussions ProcessDiscussionsWithNameAsync(Discussions discussion)
+        {
+            string userName = Application.Current.Properties["Username"].ToString();
+            int residentId = (from resident in residents where resident.Username.ToLower() == userName.ToLower() select resident.ResidentID).FirstOrDefault();
+            discussion.ResID = residentId;
+            return discussion;
         }
 
         private bool isBusy = true;
@@ -72,9 +84,32 @@ namespace MyRez.ViewModels
                 OnPropertyChanged();
             }
         }
+        public String DiscussionBody
+        {
+            get { return discussion.DiscussionBody; }
+            set
+            {
+                if(value!=discussion.DiscussionBody)
+                {
+                    discussion.DiscussionBody = value;
+                }
+            }
+        }
+        public String DiscussionTitle
+        {
+            get { return discussion.DiscussionTitle; }
+            set
+            {
+                if (value != discussion.DiscussionTitle)
+                {
+                    discussion.DiscussionTitle = value;
+                }
+            }
+        }
+        public Discussions discussion=new Models.Discussions();
         public Command DiscussionsBind { get; }
 
-        public Command DeleteDiscussions { get; }
+        public Command ProcessDiscussion { get; }
 
 
     }

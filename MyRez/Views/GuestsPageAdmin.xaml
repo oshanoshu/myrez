@@ -1,5 +1,109 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="MyRez.Views.GuestsPageAdmin">
-    <ContentPage.Content>
-    </ContentPage.Content>
-</ContentPage>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:listview="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="MyRez.Views.GuestsPageAdmin">
+      <ContentPage.Resources>
+      <ResourceDictionary>
+      <DataTemplate x:Name="HeaderTemplate" x:Key="HeaderTemplate">
+        <Grid BackgroundColor="Maroon" HeightRequest="45">
+          <Label LineBreakMode="NoWrap"
+                 Margin="10" Text="Guests" FontAttributes="Bold"
+                 FontSize="18" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center"/>
+        </Grid>
+      </DataTemplate>
+      <DataTemplate x:Name="ItemTemplate"  x:Key="ItemTemplate">
+        <Grid x:Name="grid">
+          <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="1" />
+
+
+           
+          </Grid.RowDefinitions>
+          
+          <Grid>
+            <Grid Padding="5" >
+              <Grid.RowDefinitions>
+                <RowDefinition Height="25" />
+                <RowDefinition Height="25" />
+              </Grid.RowDefinitions>
+
+               
+              <Label LineBreakMode="NoWrap"
+                     TextColor="#474747"
+
+                     FontAttributes="Bold"
+                     Text="{Binding ResName}">
+                <Label.FontSize>
+                  <OnPlatform x:TypeArguments="x:Double">
+                    <OnPlatform.Android>
+                      <OnIdiom x:TypeArguments="x:Double"
+                               Phone="22"
+                               Tablet="24" />
+                    </OnPlatform.Android>
+                    <OnPlatform.iOS>
+                      <OnIdiom x:TypeArguments="x:Double"
+                               Phone="22"
+                               Tablet="24" />
+                    </OnPlatform.iOS>
+                  </OnPlatform>
+                </Label.FontSize>
+              </Label>
+                <Label Grid.Row="1" 
+                     TextColor="#474747"
+                     Text="{Binding GuestName}" x:Name="discussionTitle">
+                <Label.FontSize>
+                  <OnPlatform x:TypeArguments="x:Double">
+                    <OnPlatform.Android>
+                      <OnIdiom x:TypeArguments="x:Double"
+                               Phone="20"
+                               Tablet="24" />
+                    </OnPlatform.Android>
+                    <OnPlatform.iOS>
+                      <OnIdiom x:TypeArguments="x:Double"
+                               Phone="22"
+                               Tablet="24" />
+                    </OnPlatform.iOS>
+                  </OnPlatform>
+                </Label.FontSize>
+              </Label>
+             
+  
+
+             <Grid Grid.Row="0" Margin="5" HorizontalOptions="End">
+             
+              <Label TextColor="#474747"
+                     LineBreakMode="WordWrap"
+                     Text="{Binding CheckinTime}">
+                <Label.FontSize>
+                  <OnPlatform x:TypeArguments="x:Double">
+                    <OnPlatform.Android>
+                      <OnIdiom x:TypeArguments="x:Double"
+                               Phone="12"
+                               Tablet="14" />
+                    </OnPlatform.Android>
+                    <OnPlatform.iOS>
+                      <OnIdiom x:TypeArguments="x:Double"
+                               Phone="12"
+                               Tablet="14" />
+                    </OnPlatform.iOS>
+                  </OnPlatform>
+                </Label.FontSize>
+              </Label>
+            </Grid>
+           </Grid>
+            </Grid>
+          <Frame Grid.Row="1" OutlineColor="#E4E4E4" HasShadow="True" HeightRequest="1"/>
+
+        </Grid>
+      </DataTemplate>
+      </ResourceDictionary>
+            </ContentPage.Resources>
+
+    <listview:SfListView x:Name="listView" ItemsSource="{Binding Guests}" ItemTemplate="{StaticResource ItemTemplate}" 
+                   HeaderTemplate="{StaticResource HeaderTemplate}"
+                   SelectionMode="Single"
+                   ItemSize="100" HeaderSize="50" SelectionBackgroundColor="Aquamarine" SelectionGesture="Tap">
+       
+      
+    
+  </listview:SfListView>
+    </ContentPage>

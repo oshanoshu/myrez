@@ -127,7 +127,7 @@
         
   </listview:SfListView>
 
-            <Editor Margin="10" MaxLength="150" Placeholder="Your Comment Here" BackgroundColor ="Aquamarine" Text="{Binding CommentBody}" HeightRequest="100" PlaceholderColor="Black" Keyboard="Chat"/>
+            <Editor Margin="10" MaxLength="150" Placeholder="Your Comment Here" BackgroundColor ="Aquamarine" Text="{Binding Comment}" HeightRequest="100" PlaceholderColor="Black" Keyboard="Chat"/>
             <Button Command="{Binding ProcessComment}" TextColor="White" BackgroundColor="Maroon" Text="Comment" HorizontalOptions="Center" WidthRequest="100" FontSize="Large"></Button>
  </StackLayout>
 </ContentPage>

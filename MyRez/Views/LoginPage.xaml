@@ -18,7 +18,7 @@
                 Aspect="AspectFill" Margin="50">
                 <Image.Source>
                     <OnPlatform x:TypeArguments="ImageSource">
-                        <On Platform="iOS, Android" Value="res.png" />
+                        <On Platform="iOS, Android" Value="home.png" />
                     </OnPlatform>
                 </Image.Source>
             </Image>

@@ -9,7 +9,7 @@ namespace MyRez.ViewModels
 {
     public class FineAdminViewModel:BaseViewModel
     {
-        private Fines fines;
+        private Fines fines=new Fines();
         private ObservableCollection<Administrators> administrators;
         private ObservableCollection<Residents> residents;
         public Command ProcessFines { get; set; }
@@ -24,17 +24,18 @@ namespace MyRez.ViewModels
         private async void ProcessFinesAsync()
         {
             administrators = await database_API.GetAdministratorsAsync();
+            residents = await database_API.GetResidentsAsync();
             fines = ProcessFinesWithNameAsync(fines);
             database_API.postNewFineAsync(fines);
         }
 
         private Fines ProcessFinesWithNameAsync(Fines fines)
         {
-            int residentId = (from resident in residents where resident.Name==ResidentName select resident.ResidentID).FirstOrDefault();
+            int residentId = (from resident in residents where resident.Name==residentName select resident.ResidentID).FirstOrDefault();
             int adminId = (from administrator in administrators where administrator.Username == Application.Current.Properties["Username"] select administrator.AdminID).FirstOrDefault();
 
             fines.ResID = residentId;
-            fines.AdmID = adminId;
+            fines.AdmID = 1;
             return fines;
         }
 
@@ -43,8 +44,11 @@ namespace MyRez.ViewModels
             get { return fines.fineAmount; }
             set
             {
-                value = fines.fineAmount;
-                OnPropertyChanged("WorkOrderItem");
+                if (value != fines.fineAmount)
+                {
+                    fines.fineAmount = value;
+                    OnPropertyChanged("FineAmount");
+                }
             }
         }
         public string ResidentName
@@ -52,8 +56,11 @@ namespace MyRez.ViewModels
             get { return residentName; }
             set
             {
-                value = residentName;
-                OnPropertyChanged("ResidentName");
+                if (value != residentName)
+                {
+                    residentName = value;
+                    OnPropertyChanged("ResidentName");
+                }
             }
         }
         public String FineReason
@@ -61,8 +68,11 @@ namespace MyRez.ViewModels
             get { return fines.fineReason; }
             set
             {
-                value = fines.fineReason;
-                OnPropertyChanged("FineReason");
+                if (value != fines.fineReason)
+                {
+                    fines.fineReason = value;
+                    OnPropertyChanged("FineReason");
+                }
             }
         }
     }

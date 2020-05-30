@@ -36,7 +36,7 @@ namespace MyRez.ViewModels
         {
             residents = await database_API.GetResidentsAsync();
             comment = ProcessCommentsWithNameAsync(comment);
-            comment.CommentTime = DateTime.Now.ToString("dddd, dd MMMM yyyy HH:mm");
+            comment.CommentTime = DateTime.Now.ToString("dd MMMM yyyy HH:mm");
             database_API.postNewCommentsAsync(comment);
         }
 
@@ -103,6 +103,7 @@ namespace MyRez.ViewModels
                 OnPropertyChanged();
             }
         }
+
         public Command ProcessComment { get; }
 
         public Command DeleteComments { get; }

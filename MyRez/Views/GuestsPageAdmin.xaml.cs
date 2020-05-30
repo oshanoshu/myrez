@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using MyRez.ViewModels;
 using Xamarin.Forms;
 
 namespace MyRez.Views
@@ -10,6 +10,7 @@ namespace MyRez.Views
         public GuestsPageAdmin()
         {
             InitializeComponent();
+            BindingContext = new GuestUserAdminViewModel();
         }
     }
 }

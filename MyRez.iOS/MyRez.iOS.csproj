@@ -145,5 +145,6 @@
     <BundleResource Include="Resources\guests.png" />
     <BundleResource Include="Resources\logout.png" />
     <BundleResource Include="Resources\workorder.png" />
+    <BundleResource Include="Resources\home.png" />
   </ItemGroup>
 </Project>

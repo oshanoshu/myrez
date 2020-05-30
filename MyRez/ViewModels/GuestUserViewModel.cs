@@ -28,7 +28,7 @@ namespace MyRez.ViewModels
             {
                 int residentId = (from res in residents where res.Username == (string)Application.Current.Properties["Username"] select res.ResidentID).First();
                 Guest.CheckedIn = true;
-                checkinTime = DateTime.Now.ToString("dddd, dd MMMM yyyy HH:mm");
+                checkinTime = DateTime.Now.ToString("dd MMMM yyyy HH:mm");
                 OnPropertyChanged("CheckinTime");
                 Guest.CheckinTime = checkinTime;
                 Guest.ResID = residentId;

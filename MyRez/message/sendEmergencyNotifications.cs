@@ -20,7 +20,7 @@ namespace MyRez.message
             // Find your Account Sid and Token at twilio.com/console
             // DANGER! This is insecure. See http://twil.io/secure
             const string accountSid = "AC4bdaa8925e71bd2db93caf781a5f48ce";
-            const string authToken = "52bede6bd94297a60b015d7064734546";
+            const string authToken = "51b8de4d3df405fe3f85863fa122f4a3";
             ObservableCollection<MockUsers> mockUser = mockUsers;
             List<String> phoneNumbers = (from mock in mockUser select "+1"+mock.phone).ToList();
 

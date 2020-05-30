@@ -120,6 +120,7 @@
       </DataTemplate>
       </ResourceDictionary>
   </ContentPage.Resources>
+    <StackLayout>
     <listview:SfListView x:Name="listView" ItemsSource="{Binding Discussions}" ItemTemplate="{StaticResource ItemTemplate}" 
                    HeaderTemplate="{StaticResource HeaderTemplate}"
                    AllowSwiping="True" SelectionMode="None" IsStickyHeader="True" SwipeOffset="120" SwipeThreshold="30"
@@ -128,24 +129,11 @@
             <local1:Behavior/>
         </listview:SfListView.Behaviors>
       
-    <listview:SfListView.LeftSwipeTemplate>
-      <DataTemplate x:Name="RightSwipeTemplate">
-        <Grid>
-            <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-          </Grid.ColumnDefinitions>
-        <Grid BackgroundColor="#DC595F" HorizontalOptions="Fill" VerticalOptions="Fill">
-          <Grid VerticalOptions="Center" HorizontalOptions="Center">
-            <Image Grid.Column="0"
-                   Grid.Row="0"
-                   HeightRequest="35"
-                   WidthRequest="35"
-                   BackgroundColor="Transparent"
-                   Source="delete.png" />
-          </Grid>
-        </Grid>
-       </Grid>
-      </DataTemplate>
-    </listview:SfListView.LeftSwipeTemplate>
+    
   </listview:SfListView>
+             <Entry Margin="10" MaxLength="150" Placeholder="Your Discussion Title" BackgroundColor ="Aquamarine" Text="{Binding DiscussionBody}" HeightRequest="30" PlaceholderColor="Black" Keyboard="Chat"/>
+
+            <Entry Margin="10" MaxLength="150" Placeholder="Your Discussion Body" BackgroundColor ="Aquamarine" Text="{Binding DiscussionTitle}" HeightRequest="30" PlaceholderColor="Black" Keyboard="Chat"/>
+            <Button Command="{Binding ProcessDiscussion}" TextColor="White" BackgroundColor="Maroon" Text="Post Discussion" HorizontalOptions="Center" WidthRequest="125" FontSize="Medium"></Button>
+        </StackLayout>
     </ContentPage>
